@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+  <form role="form" action="answer" method="post">
+    <div class="form-group">
+      <label for="age">How old are you?</label>
+      <input type="text" class="form-control" name="age" id="age" placeholder="Enter your age">
+    </div>
+    <div class="radio">
+      <div class="question-title">Are you male or female?</div>
+      <label class="radio-inline">
+        <input type="radio" name="sex" id="inlineRadio1" value="male"> Male
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="sex" id="inlineRadio2" value="female"> Female
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="education">Your education/work field</label>
+      <div>Some help text!</div>
+      <input type="text" class="form-control" id="education" name="education" placeholder="What is your education/work field?">
+    </div>
+    <div class="checkbox">
+      <div class="question-title">Do you use LaTeX?</div>
+      <label class="radio-inline">
+        <input type="radio" name="latex" value="yes"> Yes
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="latex" value="no"> No
+      </label>
+    </div>
+    <div class="checkbox">
+      <div class="question-title">Do you program?</div>
+      <label class="radio-inline">
+        <input type="radio" name="programming" value="yes"> Yes
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="programming" value="no"> No
+      </label>
+    </div>
+    <!-- hidden fields -->
+    <input type="hidden" name="start_time" value="{{start_time}}" />
+    <input type="hidden" name="referer" value="{{referer}}" />
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+{% endblock %}
