@@ -1,3 +1,25 @@
 .question-title {
   font-weight: bold;
 }
+
+.exercise-title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.exercise {
+  background: #f2f2f2;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.exercise .input, .exercise .data {
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+}
+
+.exercise .data img {
+  margin: 0 auto;
+  display: block;
+}

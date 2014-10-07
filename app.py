@@ -20,7 +20,7 @@ class Survey(db.Model):
     ref = db.StringProperty() # HTTP_REFERER
     ip = db.StringProperty() # users IP (used to prevent multiple entries)
     age = db.IntegerProperty()
-    sex = db.StringProperty(choices=set(["male", "female"]))
+    gender = db.StringProperty(choices=set(["male", "female"]))
     answer_time = db.IntegerProperty() # time in seconds
     education = db.StringProperty() # education or field
     # experience with latex, programming other?
@@ -62,7 +62,7 @@ class Answer(webapp2.RequestHandler):
             s.age = int(self.request.get('age'))
         except ValueError:
             s.age = 0
-        s.sex = self.request.get('sex')
+        s.gender = self.request.get('gender')
         s.answer_time = end_time - start_time
         s.education = self.request.get('education')
 
