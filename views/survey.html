@@ -4,40 +4,169 @@
     <p>
       <div class="form-group">
         <label for="age">How old are you?</label>
-        <input type="text" class="form-control" name="age" id="age" placeholder="Enter your age">
+        <input type="text" class="form-control" name="age" id="age" placeholder="Enter your age" />
       </div>
-      <div class="radio">
-        <div class="question-title">Are you male or female?</div>
+
+      <div class="form-group">
+        <div class="question-title">What is your gender?</div>
         <label class="radio-inline">
-          <input type="radio" name="gender" id="inlineRadio1" value="male"> Male
+          <input type="radio" name="gender" id="inlineRadio1" value="male" /> Male
         </label>
         <label class="radio-inline">
-          <input type="radio" name="gender" id="inlineRadio2" value="female"> Female
+          <input type="radio" name="gender" id="inlineRadio2" value="female" /> Female
         </label>
+      </div>
+
+      <div class="form-group">
+        <div class="question-title">What is your nationality?</div>
+        <select name="nations[]" id="nations" class="form-control">
+          <option value="0">Please choose</option>
+        {% for nation in nations %}
+          <option value="{{ nation }}">{{ nation.capitalize() }}</option>
+        {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <div class="question-title">What is the highest degree or level of school you have completed?</div>
+        <label class="radio-inline">
+          <input type="radio" name="education" value="0" /> Did not finish High School
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education" value="1" /> High School
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education" value="2" /> Bachelor's Degree
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education" value="3" /> Master's Degree
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education" value="4" /> Doctoral Degree
+        </label>
+      </div>
+
+      <div class="form-group" id="educationfield">
+        <div class="question-title">In which field?</div>
+
+        <label class="radio-inline">
+          <input type="radio" name="education2" value="humanities" /> Humanities
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education2" value="naturalsciences" /> Natural Sciences
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education2" value="engineering" /> Engineering
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education2" value="socialsciences" /> Social Sciences
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education2" value="economics" /> Economics
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education2" value="arts" /> Arts
+        </label>
+        <br />
+        <label class="radio-inline">
+          <input type="radio" name="education2" value="arts" />
+          <input type="text" class="form-control" name="other" id="othereducation" placeholder="Other" />
+        </label>
+        
+
       </div>
       <div class="form-group">
-        <label for="education">Your education/work field</label>
-        <div>Some help text!</div>
-        <input type="text" class="form-control" id="education" name="education" placeholder="What is your education/work field?">
-      </div>
-      <div class="checkbox">
-        <div class="question-title">Do you use LaTeX?</div>
+        <div class="question-title">Do you have any experience with computer programming/markup?</div>
         <label class="radio-inline">
-          <input type="radio" name="latex" value="yes"> Yes
+          <input type="radio" name="programming" value="yes" /> Yes
         </label>
         <label class="radio-inline">
-          <input type="radio" name="latex" value="no"> No
+          <input type="radio" name="programming" value="no" /> No
         </label>
       </div>
-      <div class="checkbox">
-        <div class="question-title">Do you program?</div>
+
+      <div class="form-group" id="programminglevel">
+        <div class="question-title">Please indicate your programming level of proficiency</div>
+        <div>1 meaning little experience, 6 meaning professional experience.</div>
         <label class="radio-inline">
-          <input type="radio" name="programming" value="yes"> Yes
+          <input type="radio" name="programmingex" value="1" /> 1
         </label>
         <label class="radio-inline">
-          <input type="radio" name="programming" value="no"> No
+          <input type="radio" name="programmingex" value="2" /> 2
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="programmingex" value="3" /> 3
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="programmingex" value="4" /> 4
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="programmingex" value="5" /> 5
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="programmingex" value="6" /> 6
         </label>
       </div>
+
+      <div class="form-group" id="programminglanguages">
+        <div class="question-title">Please indicate which programming/markup languages you have experience using.</div>
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="java" /> Java
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="python" /> Python
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="c" /> C / C# / C++ / Obj-C
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="c" /> Haskell / Erlang / OCaml / SML
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="js" /> JavaScript
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="html" /> HTML
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="tex" /> TeX / LaTeX
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="md" /> Markdown
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="rss" /> RSS
+        </label>
+        <br />
+        <label class="checkbox-inline">
+          <input type="checkbox" name="programminglanguage" value="other" />
+          <input type="text" class="form-control" name="other" id="otherprogramminglanguage" placeholder="Other" />
+        </label>
+      </div>
+
+      
+
+        
+
+          
+
       <div class="exercise-title">Exercise 1 - Tables</div>
       Define a notation for the table shown on the right.
       <div class="exercise">

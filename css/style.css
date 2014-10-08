@@ -23,3 +23,10 @@
   margin: 0 auto;
   display: block;
 }
+
+#educationfield, #programminglevel, #programminglanguages{
+  display: none;
+}
+
+
+label{font-weight:normal !important};
