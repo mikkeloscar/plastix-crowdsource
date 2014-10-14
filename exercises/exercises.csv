@@ -1,17 +1,17 @@
 Type	Element	Text	Img	Choice1	Choice2	Choice3
 1	List	Please construct the following list using the textarea	img/lists/1elem.png			
-2	List	Please select an option below, that you think represents above code best.	img/lists/3code_1.png	img/lists/1elem.png	img/lists/1elemdot.png	
-2	List	Please select an option below, that you think represents above code best.	img/lists/3code_2.png	img/lists/1elem.png	img/lists/1elemdot.png	
-3	List	Please select an option below, that you think represents above list best.	img/lists/1elem.png	img/lists/3code_1.png	img/lists/3code_2.png	
+2	List	Please select an option below, that you think represents above code best.		img/lists/3code_1.png	img/lists/1elem.png	img/lists/1elemdot.png	
+2	List	Please select an option below, that you think represents above code best.		img/lists/3code_2.png	img/lists/1elem.png	img/lists/1elemdot.png	
+3	List	Please select an option below, that you think represents above list best.		img/lists/1elem.png	img/lists/3code_1.png	img/lists/3code_2.png	
 1	Styling Bold	Please enter the following paragraph into the textarea. Make sure you express the text styling	img/styling/bold/1elem.png			
 2	Styling Bold	Please select an option below, that you think represents above code best.				
-3	Styling Bold	Please select an option below, that you think represents above paragraph best.	img/styling/bold/1elem.png	img/styling/3code_1.png	img/styling/3code_2.png	img/styling/3code_3.png
+3	Styling Bold	Please select an option below, that you think represents above paragraph best.		img/styling/bold/1elem.png	img/styling/3code_1.png	img/styling/3code_2.png	img/styling/3code_3.png
 1	Styling Italic	Please enter the following paragraph into the textarea. Make sure you express the text styling	img/styling/italic/1elem.png			
-2	Styling Italic	Please select an option below, that you think represents above code best.	img/styling/2code.png			
-3	Styling Italic	Please select an option below, that you think represents above paragraph best.	img/styling/1elembolditalic.png	img/styling/3code_1.png	img/styling/3code_2.png	img/styling/3code_3.png
+2	Styling Italic	Please select an option below, that you think represents above code best.		img/styling/2code.png			
+3	Styling Italic	Please select an option below, that you think represents above paragraph best.		img/styling/1elembolditalic.png	img/styling/3code_1.png	img/styling/3code_2.png	img/styling/3code_3.png
 1	Styling Color	Please enter the following paragraph into the textarea. Make sure you express colors	img/styling/color/1elem.png			
-2	Styling Color	Please select an option below, that you think represents above code best.	img/styling/2code.png	img/styling/2elem_1.png	img/styling/2elem_2.png	img/styling/2elem_3.png
-3	Styling Color	Please select an option below, that you think represents above paragraph best.	img/styling/3elem.png	img/styling/3code_1.png	img/styling/3code_2.png	img/styling/3code_3.png
+2	Styling Color	Please select an option below, that you think represents above code best.		img/styling/2code.png	img/styling/2elem_1.png	img/styling/2elem_2.png	img/styling/2elem_3.png
+3	Styling Color	Please select an option below, that you think represents above paragraph best.		img/styling/3elem.png	img/styling/3code_1.png	img/styling/3code_2.png	img/styling/3code_3.png
 	Sections					
 	Spacing					
 	References					
