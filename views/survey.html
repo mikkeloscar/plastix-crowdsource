@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <form role="form" action="answer" method="post">
+<form role="form" action="/{{type}}" method="post">
     <p>
       <div class="form-group">
         <label for="age">How old are you?</label>
@@ -30,23 +30,23 @@
       <div class="form-group">
         <div class="question-title">What is the highest degree or level of school you have completed?</div>
         <label class="radio-inline">
-          <input type="radio" name="education" value="0" /> Did not finish High School
+          <input type="radio" name="education" value="1" /> Primary school
         </label>
         <br />
         <label class="radio-inline">
-          <input type="radio" name="education" value="1" /> High School
+          <input type="radio" name="education" value="2" /> High School
         </label>
         <br />
         <label class="radio-inline">
-          <input type="radio" name="education" value="2" /> Bachelor's Degree
+          <input type="radio" name="education" value="3" /> Bachelor's Degree
         </label>
         <br />
         <label class="radio-inline">
-          <input type="radio" name="education" value="3" /> Master's Degree
+          <input type="radio" name="education" value="4" /> Master's Degree
         </label>
         <br />
         <label class="radio-inline">
-          <input type="radio" name="education" value="4" /> Doctoral Degree
+          <input type="radio" name="education" value="5" /> Doctoral Degree
         </label>
       </div>
 
@@ -79,9 +79,8 @@
         <br />
         <label class="radio-inline">
           <input type="radio" name="education2" value="arts" />
-          <input type="text" class="form-control" name="other" id="othereducation" placeholder="Other" />
+          <input type="text" class="form-control" name="education2" id="othereducation" placeholder="Other" />
         </label>
-        
 
       </div>
       <div class="form-group">
@@ -120,71 +119,63 @@
       <div class="form-group" id="programminglanguages">
         <div class="question-title">Please indicate which programming/markup languages you have experience using.</div>
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="java" /> Java
+          <input type="checkbox" name="programminglang" value="java" /> Java
         </label>
         <br />
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="python" /> Python
+          <input type="checkbox" name="programminglang" value="python" /> Python
         </label>
         <br />
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="c" /> C / C# / C++ / Obj-C
+          <input type="checkbox" name="programminglang" value="c" /> C / C# / C++ / Obj-C
         </label>
         <br />
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="c" /> Haskell / Erlang / OCaml / SML
+          <input type="checkbox" name="programminglang" value="functional" /> Haskell / Erlang / OCaml / SML
         </label>
         <br />
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="js" /> JavaScript
+          <input type="checkbox" name="programminglang" value="js" /> JavaScript
         </label>
         <br />
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="html" /> HTML
+          <input type="checkbox" name="programminglang" value="html" /> HTML
         </label>
         <br />
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="tex" /> TeX / LaTeX
+          <input type="checkbox" name="programminglang" value="tex" /> TeX / LaTeX
         </label>
         <br />
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="md" /> Markdown
+          <input type="checkbox" name="programminglang" value="md" /> Markdown
         </label>
         <br />
         <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="rss" /> RSS
-        </label>
-        <br />
-        <label class="checkbox-inline">
-          <input type="checkbox" name="programminglanguage" value="other" />
-          <input type="text" class="form-control" name="other" id="otherprogramminglanguage" placeholder="Other" />
+          <input type="checkbox" name="programminglang" value="other" />
+          <input type="text" class="form-control" name="programminglang" id="otherprogramminglanguage" placeholder="Other" />
         </label>
       </div>
 
-      
 
-        
+      <!-- <div class="exercise-title">Exercise 1 - Tables</div> -->
+      <!-- Define a notation for the table shown on the right. -->
+      <!-- <div class="exercise"> -->
+      <!--   <div class="input"> -->
+<!-- <textarea class="form-control" rows="20" name="exercise1"> -->
+<!-- Tables -->
 
-          
-
-      <div class="exercise-title">Exercise 1 - Tables</div>
-      Define a notation for the table shown on the right.
-      <div class="exercise">
-        <div class="input">
-<textarea class="form-control" rows="20" name="exercise1">
-Tables
-
-# define your table here
-</textarea>
-        </div>
-        <div class="data">
-          <img src="/img/tables.png"></img>
-        </div>
-      </div>
+<!-- # define your table here -->
+<!-- </textarea> -->
+      <!--   </div> -->
+      <!--   <div class="data"> -->
+      <!--     <img src="/img/tables.png"></img> -->
+      <!--   </div> -->
+      <!-- </div> -->
     </p>
     <!-- hidden fields -->
     <input type="hidden" name="start_time" value="{{start_time}}" />
     <input type="hidden" name="referer" value="{{referer}}" />
-    <button type="submit" class="btn btn-default">Submit</button>
+    <input type="hidden" name="ref_id" value="{{ref_id}}" />
+    <button type="submit" class="btn btn-default">Continue</button>
   </form>
 {% endblock %}
