@@ -51,6 +51,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 NUM_EXERCISES = 20
 
 def parse_exercises(fpath):
+    fpath = os.path.join(os.path.split(__file__)[0], fpath)
     lines = []
     exercises = {
             1: [],
