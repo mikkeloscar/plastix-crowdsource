@@ -68,29 +68,32 @@ def parse_exercises(fpath):
 
 def parse_line(line, exercises):
     elem = line.split('\t')
-    if elem[0] == "1":
+    if elem[1] == "1":
         type_1 = {
-                'element': elem[1],
-                'text': elem[2],
-                'img': elem[3]
+                'id': elem[0],
+                'element': elem[2],
+                'text': elem[3],
+                'img': elem[4]
                 }
         exercises[1].append(type_1)
-    elif elem[0] == "2":
+    elif elem[1] == "2":
         type_2 = {
-                'element': elem[1],
-                'text': elem[2],
-                'choice1': elem[4],
-                'choice2': elem[5],
+                'id': elem[0],
+                'element': elem[2],
+                'text': elem[3],
+                'choice1': elem[5],
                 'choice2': elem[6],
+                'choice2': elem[7],
                 }
         exercises[2].append(type_2)
-    elif elem[0] == "3":
+    elif elem[1] == "3":
         type_3 = {
-                'element': elem[1],
-                'text': elem[2],
-                'choice1': elem[4],
-                'choice2': elem[5],
+                'id': elem[0],
+                'element': elem[2],
+                'text': elem[3],
+                'choice1': elem[5],
                 'choice2': elem[6],
+                'choice2': elem[7],
                 }
         exercises[3].append(type_3)
     return exercises
