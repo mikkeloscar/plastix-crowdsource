@@ -72,28 +72,27 @@ def parse_line(line, exercises):
         type_1 = {
                 'id': elem[0],
                 'element': elem[2],
-                'text': elem[3],
-                'img': elem[4]
+                'easy': elem[3],
+                'text': elem[4],
+                'img': elem[5]
                 }
         exercises[1].append(type_1)
     elif elem[1] == "2":
         type_2 = {
                 'id': elem[0],
                 'element': elem[2],
-                'text': elem[3],
-                'choice1': elem[5],
-                'choice2': elem[6],
-                'choice2': elem[7],
+                'easy': elem[3],
+                'text': elem[4],
+                'choices': elem[5:]
                 }
         exercises[2].append(type_2)
     elif elem[1] == "3":
         type_3 = {
                 'id': elem[0],
                 'element': elem[2],
-                'text': elem[3],
-                'choice1': elem[5],
-                'choice2': elem[6],
-                'choice2': elem[7],
+                'easy': elem[3],
+                'text': elem[4],
+                'choices': elem[5:]
                 }
         exercises[3].append(type_3)
     return exercises
