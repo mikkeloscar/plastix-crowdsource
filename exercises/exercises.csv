@@ -1,5 +1,5 @@
 Id	Type	Element	Easy	Text	Img	Choice1	Choice2	Choice3	Choice4
-1	1	List	How many bullets ( are there in the list?	Please make a plain text representation of the list using the text editor	img/lists/1.png				
+1	1	List	How many bullets are there in the list?	Please make a plain text representation of the list using the text editor	img/lists/1.png				
 2	2	List	How many bullets does above code represent?	Please select an option below, that you think represents above code best.	img/lists/3_1.png	img/lists/1.png	img/lists/1_2.png		
 3	2	List	How many bullets does above code represent?	Please select an option below, that you think represents above code best.	img/lists/3_2.png	img/lists/1.png	img/lists/1_2.png		
 4	3	List	How many bullets are there in the list?	Please select an option below, that you think represents above list best.	img/lists/1.png	img/lists/3_1.png	img/lists/3_2.png		
