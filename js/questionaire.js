@@ -2,7 +2,7 @@ jQuery(window).load(function() {
 
   $('input:radio[name="education"]').change(
     function(){
-      if ($(this).is(':checked') && (parseInt($(this).val()) > 1)) {
+      if ($(this).is(':checked') && (parseInt($(this).val()) > 2)) {
         $("#educationfield").show();
       } else {
         $("#educationfield").hide();

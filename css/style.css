@@ -1,3 +1,7 @@
+.container{
+  padding-bottom: 25px;
+}
+
 .question-title {
   font-weight: bold;
 }

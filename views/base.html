@@ -19,14 +19,16 @@
     <script>
       window.onload = function () {
         var myTextarea = document.getElementById("texteditor");
-        var editor = CodeMirror.fromTextArea(myTextarea, {
-          lineNumbers: true,
-          indentUnit: 2,
-          tabSize: 2,
-          indentWithTabs: true,
-          autofocus: true,
-          mode: "text/html"
-        });
+        if(myTextarea){
+          var editor = CodeMirror.fromTextArea(myTextarea, {
+            lineNumbers: true,
+            indentUnit: 2,
+            tabSize: 2,
+            indentWithTabs: true,
+            autofocus: true,
+            mode: "text/html"
+          });
+        }
       };
     </script>
 
