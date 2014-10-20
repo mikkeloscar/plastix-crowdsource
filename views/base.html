@@ -13,6 +13,23 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="js/questionaire.js"></script>
 
+    <!-- js text editor -->
+    <link rel="stylesheet" href="css/codemirror.css">
+    <script src="js/codemirror.js"></script>
+    <script>
+      window.onload = function () {
+        var myTextarea = document.getElementById("texteditor");
+        var editor = CodeMirror.fromTextArea(myTextarea, {
+          lineNumbers: true,
+          indentUnit: 2,
+          tabSize: 2,
+          indentWithTabs: true,
+          autofocus: true,
+          mode: "text/html"
+        });
+      };
+    </script>
+
     <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css" />
   </head>
   <body>

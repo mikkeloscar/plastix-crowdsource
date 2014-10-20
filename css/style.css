@@ -29,4 +29,12 @@
 }
 
 
-label{font-weight:normal !important};
+label{
+  font-weight:normal !important;
+}
+
+#texteditorcontainer{
+  border:1px solid #ddd;
+  margin-bottom: 50px;
+  cursor: text;
+}

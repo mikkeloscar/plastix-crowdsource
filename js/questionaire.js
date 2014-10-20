@@ -20,4 +20,18 @@ jQuery(window).load(function() {
     }
   );
 
+  var timer;
+  var counter = 0;
+
+  $("#timerarea").focus(function(){
+    timer = setInterval(function(){
+      counter++;
+      $("#timer").html(counter);
+    }, 1000);
+  });
+
+  $("#submit").click(function(){
+    clearInterval(timer);
+  });
+
 });
