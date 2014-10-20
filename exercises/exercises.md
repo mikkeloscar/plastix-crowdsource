@@ -30,49 +30,11 @@ Various support of unicode-characters
 Math
 
 
-# EXERCISES
+# COMMENTS
 
-Lists, Type1
-excercises/lists1.tex
+Two type 2 exercises for lists: not to rule any style out, and get feedback for both stylings.
 
+No type 2 for sections: making a multiple choice for renderings for a sectioned text seems like a 
+too simple exercise, and the results of this exercise would not inlighten us further.
 
-Lists, Type2
-
-* Pick up Peter
-* Go to the supermarket, buy:
-** Eggs
-** Milk
-** Coffee
-* Call mother
-** Say happy birthday
-** Send greetings from dad
-
-* Pick up Peter
-* Go to the supermarket, buy:
-  * Eggs
-  * Milk
-  * Coffee
-* Call mother
-  * Say happy birthday
-  * Send greetings from dad
-
-- Pick up Peter
-- Go to the supermarket, buy:
-  - Eggs
-  - Milk
-  - Coffee
-- Call mother
-  - Say happy birthday
-  - Send greetings from dad
-
-- Pick up Peter
-- Go to the supermarket, buy:
--- Eggs
--- Milk
--- Coffee
-- Call mother
--- Say happy birthday
--- Send greetings from dad
-
-
-
+Exercises about spacing omitted, since the inituively most readable method of producing spacing would be new lines (carriage returns) and regular white space (spaces). The only downside to this approach is consitently layouting throughout a document.

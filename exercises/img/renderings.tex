@@ -23,6 +23,14 @@
 \usepackage{float}
 \usepackage{color}
 
+\usepackage{titlesec}
+
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\paragraph}{\large\bfseries}
+\titleformat*{\subparagraph}{\large\bfseries}
+
 \usepackage{enumitem}
 \setlist[itemize]{label=}
 
@@ -95,7 +103,7 @@ img/lists/3_1.png
 
 
 img/lists/3_2.png
-
+  
 * Pick up Peter
 * Go to the supermarket, buy:
   * Eggs
@@ -187,9 +195,95 @@ Switching text and colors: %red green% and %blue yellow%
 img/styling/color/2\_1.png\\[.5cm]
 Switching text and colors: \textcolor{red}{green} and \textcolor{blue}{yellow}\\[.5cm]
 img/styling/color/2\_2.png\\[.5cm]
-Switching text and colors: \textcolor{green}{red} and \textcolor{yellow}{blue}\\[.5cm]
+Switching text and colors: \textcolor{green}{red} and \textcolor{yellow}{blue}\\[1.5cm]
+img/sections/1.png
+\section*{English language}
+English is a West Germanic language.
+\subsection*{Vocabulary}
+English vocabulary has changed considerably over the centuries.
+\subsubsection*{Number of words in English}
+The vocabulary of English is undoubtedly very large.
+\subsection*{History}
+English originated in the dialects of North Sea Germanic.
+
+\newpage
+\begin{verbatim}
+img/sections/3_1.png
+
+====== English language ======
+English is a West Germanic language.
+
+===== Vocabulary =====
+English vocabulary has changed considerably over the centuries.
+
+==== Number of words in English ====
+The vocabulary of English is undoubtedly very large.
+
+===== History =====
+English originated in the dialects of North Sea Germanic.
 
 
+
+img/sections/3_2.png
+
+================
+English language
+================
+English is a West Germanic language.
+
+----------
+Vocabulary
+----------
+English vocabulary has changed considerably over the centuries.
+
+Number of words in English
+==========================
+The vocabulary of English is undoubtedly very large.
+
+-------
+History
+-------
+English originated in the dialects of North Sea Germanic.
+
+\end{verbatim}
+\newpage
+\begin{verbatim}
+img/sections/3_3.png
+
+== English language ==
+English is a West Germanic language.
+
+=== Vocabulary ===
+English vocabulary has changed considerably over the centuries.
+
+==== Number of words in English ====
+The vocabulary of English is undoubtedly very large.
+
+=== History ===
+English originated in the dialects of North Sea Germanic.
+
+
+
+img/sections/3_4.png
+
+English language
+================
+English is a West Germanic language.
+
+Vocabulary
+----------
+English vocabulary has changed considerably over the centuries.
+
+Number of words in English
+..........................
+The vocabulary of English is undoubtedly very large.
+
+History
+-------
+English originated in the dialects of North Sea Germanic.
+
+
+\end{verbatim}
 
 
 \end{document}

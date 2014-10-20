@@ -1,39 +1,29 @@
-Id	Type	Element	Text	Img	Choice1	Choice2	Choice3
-			How many bullets are there in the list?				
-1	1	List	Please construct the following list using the textarea	img/lists/1.png			
-			How many bullets does above code represent?				
-2	2	List	Please select an option below, that you think represents above code best.	img/lists/3_1.png	img/lists/1.png	img/lists/1_2.png	
-			How many bullets does above code represent?				
-3	2	List	Please select an option below, that you think represents above code best.	img/lists/3_2.png	img/lists/1.png	img/lists/1_2.png	
-			How many bullets are there in the list?				
-4	3	List	Please select an option below, that you think represents above list best.	img/lists/1.png	img/lists/3_1.png	img/lists/3_2.png	
-			How many words are written in bold?				
-5	1	Styling Bold	Please enter the following paragraph into the textarea. Make sure you express the text styling	img/styling/bold/1.png			
-			How many bold words does above code yield?				
-6	2	Styling Bold	Please select an option below, that you think represents above code best.	img/styling/bold/3_1.png	img/styling/bold/1.png	img/styling/bold/2_2.png	img/styling/bold/2_3.png
-			How many words are written in bold?				
-7	3	Styling Bold	Please select an option below, that you think represents above paragraph best.	img/styling/bold/1.png	img/styling/bold/3_1.png	img/styling/bold/3_2.png	img/styling/bold/3_3.png
-			How many words are written in italic?				
-8	1	Styling Italic	Please enter the following paragraph into the textarea. Make sure you express the text styling	img/styling/italic/1.png			
-			How many italic words does above code yield?				
-9	2	Styling Italic	Please select an option below, that you think represents above code best.	img/styling/italic/3_2.png	img/styling/italic/1.png	img/styling/italic/2_2.png	img/styling/italic/2_3.png
-			How many words are written in italic?				
-10	3	Styling Italic	Please select an option below, that you think represents above paragraph best.	img/styling/italic/1.png	img/styling/italic/3_1.png	img/styling/italic/3_2.png	img/styling/italic/3_3.png
-			How many words are written in color?				
-11	1	Styling Color	Please enter the following paragraph into the textarea. Make sure you express colors	img/styling/color/1.png			
-			How many colored words does above code yield?				
-12	2	Styling Color	Please select an option below, that you think represents above code best.	img/styling/color/2.png	img/styling/color/2_1.png	img/styling/color/2_2.png	
-			How many words are written in color?				
-13	3	Styling Color	Please select an option below, that you think represents above paragraph best.	img/styling/color/1.png	img/styling/color/3_1.png	img/styling/color/3_2.png	img/styling/color/3_3.png
-14		Sections					
-15		Spacing					
-16		References					
-17		Images					
-18		Tables					
-19		Symbols					
-20		Fonts					
-21		Alignment					
-22		Hyperlinks					
-23		Captions					
-24		Unicode					
-25		Math					
+Id	Type	Element	Easy	Text	Img	Choice1	Choice2	Choice3	Choice4
+				How many bullets are there in the list?					
+1	1	List	How many bullets are there in the list?	Please make a plain text representation of the list using the text editor	img/lists/1.png				
+2	2	List	How many bullets does above code represent?	Please select an option below, that you think represents above code best.	img/lists/3_1.png	img/lists/1.png	img/lists/1_2.png		
+3	2	List	How many bullets does above code represent?	Please select an option below, that you think represents above code best.	img/lists/3_2.png	img/lists/1.png	img/lists/1_2.png		
+4	3	List	How many bullets are there in the list?	Please select an option below, that you think represents above list best.	img/lists/1.png	img/lists/3_1.png	img/lists/3_2.png		
+5	1	Styling Bold	How many words are written in bold?	Please make a plain text representation of the paragraph using the text editor. Make sure you express the text styling	img/styling/bold/1.png				
+6	2	Styling Bold	How many bold words does above code yield?	Please select an option below, that you think represents above code best.	img/styling/bold/3_1.png	img/styling/bold/1.png	img/styling/bold/2_2.png	img/styling/bold/2_3.png	
+7	3	Styling Bold	How many words are written in bold?	Please select an option below, that you think represents above paragraph best.	img/styling/bold/1.png	img/styling/bold/3_1.png	img/styling/bold/3_2.png	img/styling/bold/3_3.png	
+8	1	Styling Italic	How many words are written in italic?	Please make a plain text representation of the paragraph using the text editor. Make sure you express the text styling	img/styling/italic/1.png				
+9	2	Styling Italic	How many italic words does above code yield?	Please select an option below, that you think represents above code best.	img/styling/italic/3_2.png	img/styling/italic/1.png	img/styling/italic/2_2.png	img/styling/italic/2_3.png	
+10	3	Styling Italic	How many words are written in italic?	Please select an option below, that you think represents above paragraph best.	img/styling/italic/1.png	img/styling/italic/3_1.png	img/styling/italic/3_2.png	img/styling/italic/3_3.png	
+11	1	Styling Color	How many words are written in color?	Please make a plain text representation of the paragraph using the text editor. Make sure you express cthe olors	img/styling/color/1.png				
+12	2	Styling Color	How many colored words does above code yield?	Please select an option below, that you think represents above code best.	img/styling/color/2.png	img/styling/color/2_1.png	img/styling/color/2_2.png		
+13	3	Styling Color	How many words are written in color?	Please select an option below, that you think represents above paragraph best.	img/styling/color/1.png	img/styling/color/3_1.png	img/styling/color/3_2.png	img/styling/color/3_3.png	
+14	1	Sections	How many section levels are present?	Please make a plain text representation of the text using the text editor	img/sections/1.png				
+15	3	Sections	How many section levels are present?	Please select an option below, that you think represents above article best.	img/sections/1.png	img/sections/3_1.png	img/sections/3_2.png	img/sections/3_3.png	img/sections/3_4.png
+16	1	References			img/references/1.png				
+17	2	References							
+18	3	References							
+		Images							
+		Tables							
+		Symbols							
+		Fonts							
+		Alignment							
+		Hyperlinks							
+		Captions							
+		Unicode							
+		Math							
