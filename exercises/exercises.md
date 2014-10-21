@@ -38,3 +38,5 @@ No type 2 for sections: making a multiple choice for renderings for a sectioned 
 too simple exercise, and the results of this exercise would not inlighten us further.
 
 Exercises about spacing omitted, since the inituively most readable method of producing spacing would be new lines (carriage returns) and regular white space (spaces). The only downside to this approach is consitently layouting throughout a document.
+
+It seems a somewhat established way of referencing external material exists. Instead referencing exercises are about footnotes.

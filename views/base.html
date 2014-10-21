@@ -29,6 +29,13 @@
             mode: "text/html"
           });
         }
+
+
+        $("img").each(function(){
+          //this.width/=2;this.onload=null;
+          var w = $(this).width();
+          $(this).width(w/3);
+        });
       };
     </script>
 
