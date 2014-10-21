@@ -12,14 +12,20 @@ Id	Type	Element	Easy	Text	Img	Choice1	Choice2	Choice3	Choice4
 11	1	Styling Color	How many words are written in color?	Please make a plain text representation of the paragraph using the text editor. Make sure you express cthe olors	img/styling/color/1.png				
 12	2	Styling Color	How many colored words does above code yield?	Please select an option below, that you think represents above code best.	img/styling/color/2.png	img/styling/color/2_1.png	img/styling/color/2_2.png		
 13	3	Styling Color	How many words are written in color?	Please select an option below, that you think represents above paragraph best.	img/styling/color/1.png	img/styling/color/3_1.png	img/styling/color/3_2.png	img/styling/color/3_3.png	
-14	1	Sections	How many section levels are present?	Please make a plain text representation of the text using the text editor	img/sections/1.png				
-15	3	Sections	How many section levels are present?	Please select an option below, that you think represents above article best.	img/sections/1.png	img/sections/3_1.png	img/sections/3_2.png	img/sections/3_3.png	img/sections/3_4.png
-16	1	References			img/references/1.png				
-17	2	References							
-18	3	References							
-		Images							
-		Tables							
-		Symbols							
+14	1	Sections	How many different section levels are present in the article?	Please make a plain text representation of the text using the text editor	img/sections/1.png				
+15	3	Sections	How many different section levels are present in the article?	Please select an option below, that you think represents above article best.	img/sections/1.png	img/sections/3_1.png	img/sections/3_2.png	img/sections/3_3.png	img/sections/3_4.png
+16	1	References	How many references are present in the paragraph?	Please make a plain text representation of the footnote using the text editor	img/references/1.png				
+17	2	References	How many references does above code yield?	Please select an option below, that you think represents above code best.	img/references/3_1.png	img/references/1.png	img/references/2_2.png	img/references/2_3.png	
+18	3	References	How many references are present in the paragraph?	Please select an option below, that you think represents above footnote best.	img/references/1.png	img/references/3_1.png	img/references/3_2.png	img/references/3_3.png	
+19	1	Figures	What is in the picture?	Please make a plain text representation of the figure using the text editor	img/figures/1.png				
+20	2	Figures	According the the coded figure text, what is in the picture?	Please select an option below, that you think represents above code best.	img/figures/3_1.png	img/figures/1.png	img/figures/2_2.png	img/figures/2_3.png	
+21	3	Figures	What is in the picture?	Please select an option below, that you think represents above figure best.	img/figures/1.png	img/figures/3_1.png	img/figures/3_2.png	img/figures/3_3.png	
+22	1	Tables							
+23	2	Tables							
+24	3	Tables							
+25	1	Symbols	How many symbols are in the paragraph?	Please make a plain text representation of the symbols using the text editor	img/symbols/1.png				
+26	2	Symbols	How many symbols does the code yield?	Please select an option below, that you think represents above code best.	img/symbols/3_2.png	img/symbols/1.png	img/symbols/2_2.png	img/symbols/2_3.png	img/symbols/2_4.png
+27	3	Symbols	How many symbols are in the paragraph?	Please select an option below, that you think represents above symbols best.	img/symbols/1.png	img/symbols/3_1.png	img/symbols/3_2.png	img/symbols/3_3.png	img/symbols/3_4.png
 		Fonts							
 		Alignment							
 		Hyperlinks							

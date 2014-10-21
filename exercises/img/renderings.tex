@@ -14,8 +14,11 @@
 \usepackage{times}
 \usepackage{balance}
 \usepackage{graphicx}
-\usepackage{caption}
+
+\usepackage[skip=14pt,font=Large]{caption}
+\captionsetup[figure]{labelformat=empty}
 \usepackage{subcaption}
+
 
 \usepackage{hyperref}
 \usepackage{dsfont}
@@ -25,6 +28,11 @@
 
 \usepackage{titlesec}
 
+\usepackage{footmisc}% http://ctan.org/pkg/footmisc
+\usepackage{relsize}% http://ctan.org/pkg/relsize
+\renewcommand\footnotelayout{\small}
+
+
 \titleformat*{\section}{\LARGE\bfseries}
 \titleformat*{\subsection}{\Large\bfseries}
 \titleformat*{\subsubsection}{\large\bfseries}
@@ -33,6 +41,14 @@
 
 \usepackage{enumitem}
 \setlist[itemize]{label=}
+
+\hypersetup{
+    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black
+}
 
 \begin{document}
 \fontsize{14}{14}\selectfont
@@ -284,6 +300,121 @@ English originated in the dialects of North Sea Germanic.
 
 
 \end{verbatim}
+\noindent
+img/references/1.png\\[.5cm]
+The first Harry Potter book$^1$ was written in 1997.\\[1cm]
+$^1$ by J.K. Rowling
+
+\newpage
+\begin{verbatim}
+img/references/3_1.png
+
+The first Harry Potter book[#]_ was written in 1997.
+
+[#]: by J.K. Rowling
+
+
+img/references/3_2.png
+
+The first Harry Potter book%footnote by J.K. Rowling% was
+written in 1997.
+
+
+img/references/3_3.png
+
+The first Harry Potter book^[#] was written in 1997.
+
+[#]: by J.K. Rowling
+
+\end{verbatim}
+\noindent
+img/references/2\_2.png\\[.5cm]
+The first Harry Potter book[1] was written in 1997.\\[1cm]
+[1]: by J.K. Rowling\\[1cm]
+img/references/2\_3.png\\[.5cm]
+The first Harry Potter book$_1$ was written in 1997.\\[1cm]
+$_1$ by J.K. Rowling
+\newpage
+img/figures/1.png\\[.5cm]
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=1]{gull.png}
+\caption{A picture of a gull.}
+\end{center}
+\end{figure}
+\noindent
+\begin{verbatim}
+img/figures/3_1.png
+
+![my_image]
+
+[my_image]: gull.jpg "A picture of a gull."
+
+
+img/figures/3_2.png
+
+!(gull.jpg "A picture of a gull.")
+
+
+img/figures/3_3.png
+
+!gull.jpg(A picture of a gull.)!
+
+\end{verbatim}
+\newpage
+\noindent
+img/figures/2\_2.png\\[.5cm]
+A picture of a gull.
+\begin{figure}[H]
+\includegraphics[scale=1]{gull.png}
+\end{figure}
+\newpage
+\noindent
+img/figures/2\_3.png\\[.5cm]
+\begin{figure}[H]
+\begin{center}
+\fontsize{14}{14}\selectfont
+A picture of a gull.\\
+\setlength{\itemsep}{12pt}
+\setlength{\parskip}{12pt}
+\setlength{\parsep}{12pt}
+
+\includegraphics[scale=1]{gull.png}
+\end{center}
+\end{figure}
+\noindent
+img/symbols/1.png\\[.5cm]
+$\beta\ \ \  \alpha$
+\begin{verbatim}
+
+img/symbols/3_1.png
+
+#beta  #alpha
+
+
+img/symbols/3_2.png
+
+#B  #a
+
+
+img/symbols/3_3.png
+
+#B# #a#
+
+
+img/symbols/3_4.png
+
+#beta# #alpha#
+
+\end{verbatim}
+\noindent
+img/symbols/2\_2.png\\[.5cm]
+\textbf{B} \ \textbf{a}\\[.5cm]
+img/symbols/2\_3.png\\[.5cm]
+\textit{B} \ \textit{a}\\[.5cm]
+img/symbols/2\_4.png\\[.5cm]
+\textbf{\#B} \ \textbf{\#a}\\[.5cm]
+
 
 
 \end{document}
