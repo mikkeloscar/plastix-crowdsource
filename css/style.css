@@ -47,6 +47,10 @@
   vertical-align: top;
 }
 
+.easy {
+  margin-top: 30px;
+}
+
 .spacer {
   display: inline-block;
   width: 10px;

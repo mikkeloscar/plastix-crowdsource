@@ -69,37 +69,39 @@ def parse_exercises(fpath):
 
 def parse_line(line, exercises):
     elem = line.split('\t')
-    if elem[1] == "1":
-        type_1 = {
-                'id': elem[0],
-                'type': elem[1],
-                'element': elem[2],
-                'easy': elem[3],
-                'text': elem[4],
-                'img': elem[5]
-                }
-        exercises[1].append(type_1)
-    else:
-        exercise = {
-                'id': elem[0],
-                'type': elem[1],
-                'element': elem[2],
-                'easy': elem[3],
-                'text': elem[4],
-                'img': elem[5]
-                }
-        choices = []
-        for i, c in enumerate(elem[6:]):
-            choice = {
-                    'img': c,
-                    'value': i + 1
+    if len(elem) >= 5:
+        if elem[1] == "1":
+            type_1 = {
+                    'id': elem[0],
+                    'type': elem[1],
+                    'element': elem[2],
+                    'easy': elem[3],
+                    'text': elem[4],
+                    'img': elem[5]
                     }
-            choices.append(choice)
-        exercise['choices'] = choices
-        if elem[1] == "2":
-            exercises[2].append(exercise)
+            exercises[1].append(type_1)
         else:
-            exercises[3].append(exercise)
+            exercise = {
+                    'id': elem[0],
+                    'type': elem[1],
+                    'element': elem[2],
+                    'easy': elem[3],
+                    'text': elem[4],
+                    'img': elem[5]
+                    }
+            choices = []
+            for i, c in enumerate(elem[6:]):
+                if c != "":
+                    choice = {
+                            'img': c,
+                            'value': i + 1
+                            }
+                    choices.append(choice)
+            exercise['choices'] = choices
+            if elem[1] == "2":
+                exercises[2].append(exercise)
+            else:
+                exercises[3].append(exercise)
     return exercises
 
 EXERCISES = parse_exercises('exercises/exercises.csv')
@@ -131,6 +133,7 @@ class ExerciseModel(db.Model):
     choice = db.IntegerProperty()
     answer = db.TextProperty(indexed=False)
     more = db.TextProperty(indexed=False)
+    more = db.StringProperty()
     date = db.DateTimeProperty(auto_now_add=True)
 
 # DataStore
@@ -252,6 +255,7 @@ class Exercise(webapp2.RequestHandler):
             e.answer = self.request.get('answer')
 
         e.more = self.request.get('more')
+        e.easy = self.request.get('easy')
 
         try:
             e.put()
