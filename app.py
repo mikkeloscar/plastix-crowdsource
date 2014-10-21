@@ -131,6 +131,7 @@ class ExerciseModel(db.Model):
     choice = db.IntegerProperty()
     answer = db.TextProperty(indexed=False)
     more = db.TextProperty(indexed=False)
+    more = db.StringProperty()
     date = db.DateTimeProperty(auto_now_add=True)
 
 # DataStore
@@ -252,6 +253,7 @@ class Exercise(webapp2.RequestHandler):
             e.answer = self.request.get('answer')
 
         e.more = self.request.get('more')
+        e.easy = self.request.get('easy')
 
         try:
             e.put()
