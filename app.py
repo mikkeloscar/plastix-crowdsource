@@ -91,7 +91,7 @@ def parse_line(line, exercises):
                     }
             choices = []
             for i, c in enumerate(elem[6:]):
-                if c != "":
+                if c != "" and c != "\n":
                     choice = {
                             'img': c,
                             'value': i + 1
