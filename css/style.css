@@ -42,3 +42,8 @@ label{
   margin-bottom: 50px;
   cursor: text;
 }
+
+.more{
+  width: 500px;
+  height: 200px;
+}

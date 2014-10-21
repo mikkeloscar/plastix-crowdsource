@@ -1,17 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-<form role="form" action="/exercise/{{num}}" method="post">
-    <p>
-    Opgave type beskrivelse!
-    </p>
+<form class="form-group" role="form" action="/exercise/{{num}}" method="post">
+    <div class="form-group">
 
-    {% for exercise in exercises %}
-    <p>bla bla</p>
+        <p>
+        Opgave type beskrivelse!
+        </p>
+
+        {% for exercise in exercises %}
+        <p>bla bla</p>
+        
+        {% endfor %}
+
+        
+        <div id="texteditorcontainer">
+            <textarea id="texteditor"></textarea>
+        </div>
+
+        <!-- we want elaboration for every non-easy exercise -->
+        <label for="more">Please provide a short explanation for your answer</label><br />
+        <textarea name="more" id="more" class="more"></textarea>
     
-    {% endfor %}
-
-    <div id="texteditorcontainer">
-        <textarea id="texteditor"></textarea>
     </div>
 
     <!-- hidden fields -->
