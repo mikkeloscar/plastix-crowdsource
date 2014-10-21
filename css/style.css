@@ -12,9 +12,9 @@
 }
 
 .exercise {
-  background: #f2f2f2;
   padding: 10px;
   border: 1px solid #ddd;
+  margin-bottom: 50px;
 }
 
 .exercise .input, .exercise .data {
@@ -28,22 +28,66 @@
   display: block;
 }
 
-#educationfield, #programminglevel, #programminglanguages{
+#educationfield, #programminglevel, #programminglanguages {
   display: none;
 }
 
 
-label{
-  font-weight:normal !important;
+/* label { */
+/*   font-weight:normal !important; */
+/* } */
+
+.answer {
+  display: inline-block;
+  min-width: 40%;
+  vertical-align: top;
+}
+
+.spacer {
+  display: inline-block;
+  width: 10px;
+}
+
+.image {
+  display: inline-block;
+  max-width: 40%;
+  vertical-align: middle;
+}
+
+.image img {
+  display: block;
+  max-width: 100%;
 }
 
 #texteditorcontainer{
   border:1px solid #ddd;
-  margin-bottom: 50px;
   cursor: text;
 }
 
 .more{
   width: 500px;
   height: 200px;
+}
+
+.img img {
+  max-width: 400px;
+  max-height: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+.choice {
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin: 4px 0;
+}
+
+.choice div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.choice .radio-choice {
+  width: 50px;
+  text-align: center;
 }

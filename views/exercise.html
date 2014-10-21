@@ -4,23 +4,39 @@
     <div class="form-group">
 
         <p>
-        Opgave type beskrivelse!
+        {{ exercise['id'] }}
         </p>
 
-        {% for exercise in exercises %}
-        <p>bla bla</p>
-        
-        {% endfor %}
-
-        
-        <div id="texteditorcontainer">
-            <textarea id="texteditor"></textarea>
+        <div class="exercise">
+        {% if exercise['type'] == "1" %}
+          <div class="desc">{{ exercise['text'] }}</div>
+          <div class="answer">
+            <div id="texteditorcontainer">
+                <textarea id="texteditor" name="answer"></textarea>
+            </div>
+          </div><div class="spacer"></div><div class="image"><img src="/{{exercise['img']}}" /></div>
+        {% else %}
+        <div class="img"><img src="/{{exercise['img']}}" /></div>
+        <div class="desc">{{ exercise['text'] }}</div>
+        <div class="choices">
+          {% for choice in exercise['choices'] %}
+          <div class="choice">
+            <label>
+              <div class="radio-choice">
+                <input type="radio" name="choice" value="{{choice['value']}}" />
+              </div>
+              <div class="img"><img src="/{{choice['img']}}" /></div>
+            </label>
+          </div>
+          {% endfor %}
         </div>
+        {% endif %}
+        </div>
+
 
         <!-- we want elaboration for every non-easy exercise -->
         <label for="more">Please provide a short explanation for your answer</label><br />
         <textarea name="more" id="more" class="more"></textarea>
-    
     </div>
 
     <!-- hidden fields -->

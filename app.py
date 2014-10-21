@@ -1,5 +1,6 @@
 import os
 import time
+import random
 
 from google.appengine.ext import db
 
@@ -48,7 +49,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-NUM_EXERCISES = 20
+NUM_EXERCISES = 5
 
 def parse_exercises(fpath):
     fpath = os.path.join(os.path.split(__file__)[0], fpath)
@@ -71,40 +72,65 @@ def parse_line(line, exercises):
     if elem[1] == "1":
         type_1 = {
                 'id': elem[0],
+                'type': elem[1],
                 'element': elem[2],
                 'easy': elem[3],
                 'text': elem[4],
                 'img': elem[5]
                 }
         exercises[1].append(type_1)
-    elif elem[1] == "2":
-        type_2 = {
+    else:
+        exercise = {
                 'id': elem[0],
+                'type': elem[1],
                 'element': elem[2],
                 'easy': elem[3],
                 'text': elem[4],
-                'choices': elem[5:]
+                'img': elem[5]
                 }
-        exercises[2].append(type_2)
-    elif elem[1] == "3":
-        type_3 = {
-                'id': elem[0],
-                'element': elem[2],
-                'easy': elem[3],
-                'text': elem[4],
-                'choices': elem[5:]
-                }
-        exercises[3].append(type_3)
+        choices = []
+        for i, c in enumerate(elem[6:]):
+            choice = {
+                    'img': c,
+                    'value': i + 1
+                    }
+            choices.append(choice)
+        exercise['choices'] = choices
+        if elem[1] == "2":
+            exercises[2].append(exercise)
+        else:
+            exercises[3].append(exercise)
     return exercises
 
 EXERCISES = parse_exercises('exercises/exercises.csv')
+
+def get_exercise(history, num):
+    exercise = None
+    history = history.split(';')
+    if num <= NUM_EXERCISES / 3:
+        # show type 1 exercises first in the survey
+        shuffle = list(EXERCISES[1])
+    else:
+        shuffle = list(EXERCISES[2] + EXERCISES[3])
+    random.shuffle(shuffle)
+    for s in shuffle:
+        if s not in history:
+            exercise = s
+            break
+    history.append(exercise['id'])
+    history = ';'.join(history)
+    if exercise['type'] in ["2", "3"]:
+        random.shuffle(exercise['choices'])
+    return history, exercise
+
 
 class ExerciseModel(db.Model):
     survey_id = db.IntegerProperty()
     ex_type = db.IntegerProperty()
     ex_id = db.IntegerProperty()
-    choice = db.StringProperty(choices=set(["choice1", "choice2", "choice3"]))
+    choice = db.IntegerProperty()
     answer = db.TextProperty(indexed=False)
+    more = db.TextProperty(indexed=False)
     date = db.DateTimeProperty(auto_now_add=True)
 
 # DataStore
@@ -194,13 +220,15 @@ class Exercise(webapp2.RequestHandler):
     def get(self):
         survey_id = self.request.get('id')
 
+        history, exercise = get_exercise("", 1)
+
         values = {
                 'survey_id': survey_id,
-                'type': 1,
-                'history': '1',
-                'ex_id': 2,
+                'type': exercise['type'],
+                'history': history,
+                'ex_id': exercise['id'],
                 'num': 1,
-                'exercise': dict(),
+                'exercise': exercise,
                 'submit': 'Continue'
                 }
 
@@ -216,9 +244,14 @@ class Exercise(webapp2.RequestHandler):
         e.ex_type = int(self.request.get('type'))
         e.ex_id = int(self.request.get('ex_id'))
         if e.ex_type in [2,3]:
-            choice = self.request.get('choice')
+            try:
+                e.choice = int(self.request.get('choice'))
+            except ValueError:
+                e.choice = 0
         elif e.ex_type == 1:
-            answer = self.request.get('answer')
+            e.answer = self.request.get('answer')
+
+        e.more = self.request.get('more')
 
         try:
             e.put()
@@ -227,14 +260,16 @@ class Exercise(webapp2.RequestHandler):
 
         # prepare for new exercise
         if int(num) <= NUM_EXERCISES:
-            # TODO generate random exercise
+            new_num = int(num) + 1
+            # generate random exercise
+            history, exercise = get_exercise("", new_num)
             values = {
                     'survey_id': survey_id,
-                    'type': 1,
-                    'history': '1',
-                    'ex_id': 2,
-                    'num': int(num) + 1,
-                    'exercise': dict()
+                    'type': exercise['type'],
+                    'history': history,
+                    'ex_id': exercise['id'],
+                    'num': new_num,
+                    'exercise': exercise
                     }
             if int(num) == NUM_EXERCISES:
                 values['submit'] = 'Submit'
@@ -244,8 +279,15 @@ class Exercise(webapp2.RequestHandler):
             view = JINJA_ENVIRONMENT.get_template('exercise.html')
             self.response.write(view.render(values))
         else:
-            # TODO get SurveyModel and add answer_time and endtime
-            self.response.write("Thank you for your answers, you spend %d seconds on them!\n" % answer_time)
+            # get SurveyModel and add answer_time and endtime
+            s = SurveyModel.get_by_id(int(survey_id))
+            s.end_time = int(time.time()) # now unix time
+            s.answer_time = s.end_time - s.start_time
+            try:
+                s.put()
+            except Exception as e:
+                self.response.write('{0}'.format(e))
+            self.response.write("Thank you for your answers, you spend %d seconds on them!\n" % s.answer_time)
 
 
 app = webapp2.WSGIApplication([
