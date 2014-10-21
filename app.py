@@ -49,7 +49,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-NUM_EXERCISES = 5
+NUM_EXERCISES = 20
 
 def parse_exercises(fpath):
     fpath = os.path.join(os.path.split(__file__)[0], fpath)
@@ -106,20 +106,32 @@ def parse_line(line, exercises):
 
 EXERCISES = parse_exercises('exercises/exercises.csv')
 
+def parse_history(history):
+    if history == "":
+        return [], []
+    hist = history.split(';')
+    ids = []
+    elems = []
+    for h in hist:
+        s = h.split(':')
+        ids.append(s[0])
+        elems.append(s[1])
+    return ids, elems
+
 def get_exercise(history, num):
     exercise = None
-    history = history.split(';')
-    if num <= NUM_EXERCISES / 3:
-        # show type 1 exercises first in the survey
-        shuffle = list(EXERCISES[1])
-    else:
-        shuffle = list(EXERCISES[2] + EXERCISES[3])
+    hist_ids, hist_elems = parse_history(history)
+    shuffle = list(EXERCISES[1] + EXERCISES[2] + EXERCISES[3])
     random.shuffle(shuffle)
     for s in shuffle:
-        if s not in history:
+        if s['id'] not in hist_ids and s['element'] not in hist_elems:
             exercise = s
             break
-    history.append(exercise['id'])
+    if history == "":
+        history = []
+    else:
+        history = history.split(';')
+    history.append(exercise['id'] + ':' + exercise['element'])
     history = ';'.join(history)
     if exercise['type'] in ["2", "3"]:
         random.shuffle(exercise['choices'])
@@ -133,7 +145,7 @@ class ExerciseModel(db.Model):
     choice = db.IntegerProperty()
     answer = db.TextProperty(indexed=False)
     more = db.TextProperty(indexed=False)
-    more = db.StringProperty()
+    easy = db.StringProperty()
     date = db.DateTimeProperty(auto_now_add=True)
 
 # DataStore
@@ -262,11 +274,13 @@ class Exercise(webapp2.RequestHandler):
         except Exception as e:
             self.response.write('{0}'.format(e))
 
+        history = self.request.get('history')
+        # generate random exercise
+        history, exercise = get_exercise(history, int(num) + 1)
+
         # prepare for new exercise
-        if int(num) <= NUM_EXERCISES:
+        if int(num) <= NUM_EXERCISES and exercise:
             new_num = int(num) + 1
-            # generate random exercise
-            history, exercise = get_exercise("", new_num)
             values = {
                     'survey_id': survey_id,
                     'type': exercise['type'],
