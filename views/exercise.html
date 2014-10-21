@@ -7,7 +7,10 @@
 
     <div class="exercise">
     {% if exercise['type'] == "1" %}
-      <div class="desc">{{ exercise['text'] }}</div>
+      <div class="desc">
+        <strong>Exercise</strong><br />
+        {{ exercise['text'] }}
+      </div>
       <div class="answer">
         <div id="texteditorcontainer">
             <textarea id="texteditor" name="answer"></textarea>

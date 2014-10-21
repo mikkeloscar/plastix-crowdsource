@@ -20,9 +20,9 @@ Id	Type	Element	Easy	Text	Img	Choice1	Choice2	Choice3	Choice4
 19	1	Figures	What is in the picture?	Please make a plain text representation of the figure using the text editor	img/figures/1.png
 20	2	Figures	According the the coded figure text, what is in the picture?	Please select an option below, that you think represents above code best.	img/figures/3_1.png	img/figures/1.png	img/figures/2_2.png	img/figures/2_3.png
 21	3	Figures	What is in the picture?	Please select an option below, that you think represents above figure best.	img/figures/1.png	img/figures/3_1.png	img/figures/3_2.png	img/figures/3_3.png
-22	1	Tables							
-23	2	Tables							
-24	3	Tables							
-25	1	Symbols	How many symbols are in the paragraph?	Please make a plain text representation of the symbols using the text editor	img/symbols/1.png				
-26	2	Symbols	How many symbols does the code yield?	Please select an option below, that you think represents above code best.	img/symbols/3_2.png	img/symbols/1.png	img/symbols/2_2.png	img/symbols/2_3.png	img/symbols/2_4.png
+22	1	Tables
+23	2	Tables
+24	3	Tables
+25	1	Symbols	How many symbols are in the paragraph?	Please make a plain text representation of the symbols using the text editor	img/symbols/1.png
+26	2	Symbols	How many symbols does the code yield?	Please select an option below, that you think represents above code best.	img/symbols/3_2.png	img/symbols/1.png	img/symbols/2_2.png	img/symbols/2_3.png
 27	3	Symbols	How many symbols are in the paragraph?	Please select an option below, that you think represents above symbols best.	img/symbols/1.png	img/symbols/3_1.png	img/symbols/3_2.png	img/symbols/3_3.png	img/symbols/3_4.png
