@@ -130,6 +130,8 @@ def get_exercise(history, num):
         if s['id'] not in hist_ids and s['element'] not in hist_elems:
             exercise = s
             break
+    if not exercise:
+        return "", False
     if history == "":
         history = []
     else:
