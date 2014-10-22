@@ -62,6 +62,9 @@ def parse_exercises(fpath):
     with open(fpath, "r") as f:
         lines = f.readlines()
 
+    # remove first line holding headers
+    lines.pop(0)
+
     for line in lines:
         exercises = parse_line(line, exercises)
     return exercises
