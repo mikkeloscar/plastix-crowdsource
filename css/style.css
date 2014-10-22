@@ -47,7 +47,7 @@
 
 .answer {
   display: inline-block;
-  min-width: 40%;
+  width: 50%;
   vertical-align: top;
 }
 

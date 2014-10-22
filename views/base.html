@@ -22,11 +22,13 @@
         if(myTextarea){
           var editor = CodeMirror.fromTextArea(myTextarea, {
             lineNumbers: true,
+            lineWrapping: true,
+            mode: "text/html",
+
             indentUnit: 2,
             tabSize: 2,
             indentWithTabs: true,
-            autofocus: true,
-            mode: "text/html"
+            autofocus: true
           });
         }
 
