@@ -2,6 +2,12 @@
 {% block content %}
 <form role="form" action="/{{type}}" method="post">
     <p>
+      <!-- introduction -->
+      <div class="introduction">
+        <h3>Welcome</h3>
+        This survey consists of some small exercises about computer programming languages. You will be given a series of small code parts, and then tell us what you think they represent. We will also show you some images, and you have to express these images using your own code. Do not be afraid - no programming experience is required!
+      </div>
+
       <div class="form-group">
         <label for="age">How old are you?</label>
         <input type="text" class="form-control" name="age" id="age" placeholder="Enter your age" />

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
   <form role="form" action="/exercise/{{num}}" method="post">
-    <p>
+<!--     <p>
     {{ exercise['id'] }}
-    </p>
+    </p> -->
 
     <div class="exercise">
     {% if exercise['type'] == "1" %}
@@ -16,12 +16,10 @@
             <textarea id="texteditor" name="answer"></textarea>
         </div>
       </div><div class="spacer"></div><div class="image"><img src="/{{exercise['img']}}" /></div>
-      <div class="form-group easy">
-        <label for="easy">{{ exercise['easy'] }}</label>
-        <input type="text" class="form-control" id="easy" name="easy" />
-      </div>
+      
     {% else %}
     <div class="img"><img src="/{{exercise['img']}}" /></div>
+    <strong>Exercise</strong><br />
     <div class="desc">{{ exercise['text'] }}</div>
     <div class="choices">
       {% for choice in exercise['choices'] %}
@@ -36,6 +34,10 @@
       {% endfor %}
     </div>
     {% endif %}
+      <div class="form-group easy">
+        <label for="easy">{{ exercise['easy'] }}</label>
+        <input type="text" class="form-control" id="easy" name="easy" />
+      </div>
     </div>
 
 
