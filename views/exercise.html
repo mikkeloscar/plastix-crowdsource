@@ -34,18 +34,20 @@
       {% endfor %}
     </div>
     {% endif %}
-      <div class="form-group easy">
-        <label for="easy">{{ exercise['easy'] }}</label>
-        <input type="text" class="form-control" id="easy" name="easy" />
+      
+      <!-- we want elaboration for every non-easy exercise -->
+      <div class="elaborate">
+        <label for="more">Please provide a short explanation for your answer</label><br />
+        <textarea name="more" id="more" class="more"></textarea>
       </div>
     </div>
 
 
-    <!-- we want elaboration for every non-easy exercise -->
-    <div class="form-group">
-      <label for="more">Please provide a short explanation for your answer</label><br />
-      <textarea name="more" id="more" class="more"></textarea>
+    <div class="form-group easy">
+      <label for="easy">{{ exercise['easy'] }}</label>
+      <input type="text" class="form-control" id="easy" name="easy" />
     </div>
+    
 
     <!-- hidden fields -->
     <input type="hidden" name="survey_id" value="{{survey_id}}" />

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<form role="form" action="/{{type}}" method="post">
+    <p>
+      <!-- introduction -->
+      <div class="introduction">
+        <h2>Welcome</h2>
+<!--         This survey consists of some small exercises about expressing
+        typographical elements only using plain text/markup notation. You will
+        be given a series of small plain text notations, and then tell us what
+        you think they represent. We will also show you some images, and you
+        have to express these images using a plain text notation you decide
+        yourself and think is best. Do not be afraid - no programming
+        experience is required! -->
+        <p>In this survey we wish to study computer markup languages as understood by people with little or no prior experience with programming. The survey will take approximately 15 minutes.</p>
+
+        <p>You will be asked to create and interpret visual typographical elements such as images, tables and lists, by using only plain text.<br/ >Imagine that you have to write an email including such typographical constructs, but you are limited to use only the characters present on you keyboard. </p>
+
+        <p>If you are unsure of how to do a specific exercise, please explain your interpretation of the given exercise in the free-text area.</p>
+
+        <p>We will store your IP-address and the amount of time you spend solving the exercises for stastistical purposes.</p>
+
+        <hr>
+        <h3>Example exercise</h3>
+        <div class="desc">
+          <strong>Exercise</strong><br />
+          Please make a plain text representation of the agenda using the text editor
+        </div>
+        <div class="answer">
+        <div id="texteditorcontainer">
+            <textarea id="texteditor" class="read-only" name="answer">Agenda
+
+# Opening
+# Approval of agenda
+# Review of previous minutes
+# Actions taken since previous meeting</textarea>
+        </div>
+        </div><div class="spacer"></div><div class="image"><img src="img/example.png" /></div>
+
+        <!-- we want elaboration for every non-easy exercise -->
+        <div class="elaborate">
+          <label for="more">Please provide a short explanation for your answer</label><br />
+          <textarea disabled="disabled" name="more" id="more" class="more">The headline and list are seperated by a blank line, and every item in the agenda is initated with a number sign, to represent numbers in the agenda list. </textarea>
+        </div>
+      </div>
+
+
+      <div class="form-group easy">
+        <label for="easy">How many items are in the agenda?</label>
+        <input type="text" class="form-control" id="easy" name="easy" value="4" disabled="disabled" />
+      </div>
+
+    
+
+      
+
+    </p>
+    <!-- hidden fields -->
+    <input type="hidden" name="start_time" value="{{start_time}}" />
+    <input type="hidden" name="referer" value="{{referer}}" />
+    <input type="hidden" name="ref_id" value="{{ref_id}}" />
+    <button type="submit" class="btn btn-default">Begin survey!</button>
+  </form>
+{% endblock %}

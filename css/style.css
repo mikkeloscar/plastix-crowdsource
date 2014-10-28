@@ -18,7 +18,7 @@
 .exercise {
   padding: 20px;
   border: 1px solid #ddd;
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 .exercise .desc {
@@ -52,7 +52,7 @@
 }
 
 .easy {
-  margin-top: 30px;
+  
 }
 
 .spacer {
@@ -68,8 +68,8 @@
 
 .image img {
   display: block;
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-left: 35px;
+  /*margin-top: 50px;*/
   /*max-width: 100%;*/
 }
 
@@ -78,9 +78,15 @@
   cursor: text;
 }
 
+.elaborate{
+  margin-top:25px;
+}
+
 .more{
   width: 500px;
   height: 200px;
+  padding: 10px;
+
 }
 
 .img img {

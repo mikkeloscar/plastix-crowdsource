@@ -20,15 +20,17 @@
       window.onload = function () {
         var myTextarea = document.getElementById("texteditor");
         if(myTextarea){
+          var readOnly = $(myTextarea).hasClass("read-only");
+
           var editor = CodeMirror.fromTextArea(myTextarea, {
             lineNumbers: true,
             lineWrapping: true,
             mode: "text/html",
-
+            readOnly: readOnly,
             indentUnit: 2,
             tabSize: 2,
             indentWithTabs: true,
-            autofocus: true
+            autofocus: !readOnly
           });
         }
 
