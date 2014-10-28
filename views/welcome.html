@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<form role="form" action="/{{type}}" method="post">
+<form role="form" action="/#no-back" method="post">
     <p>
       <!-- introduction -->
       <div class="introduction">
@@ -14,11 +14,13 @@
         experience is required! -->
         <p>In this survey we wish to study computer markup languages as understood by people with little or no prior experience with programming. The survey will take approximately 15 minutes.</p>
 
-        <p>You will be asked to create and interpret visual typographical elements such as images, tables and lists, by using only plain text.<br/ >Imagine that you have to write an email including such typographical constructs, but you are limited to use only the characters present on you keyboard. </p>
+        <p>You will be asked to create and interpret visual typographical elements such as images, tables and lists, by using only plain text.<br/ >Imagine that you have to write an email including such typographical constructs, but you are limited to use only the characters present on your keyboard. </p>
 
         <p>If you are unsure of how to do a specific exercise, please explain your interpretation of the given exercise in the free-text area.</p>
 
-        <p>We will store your IP-address and the amount of time you spend solving the exercises for stastistical purposes.</p>
+        <p>We will store your IP-address and the amount of time you spend
+        solving the exercises for stastistical purposes. The IP-address will
+        NOT be shared with anyone.</p>
 
         <hr>
         <h3>Example exercise</h3>
@@ -28,7 +30,7 @@
         </div>
         <div class="answer">
         <div id="texteditorcontainer">
-            <textarea id="texteditor" class="read-only" name="answer">Agenda
+            <textarea id="texteditor" class="read-only">Agenda
 
 # Opening
 # Approval of agenda
@@ -40,25 +42,20 @@
         <!-- we want elaboration for every non-easy exercise -->
         <div class="elaborate">
           <label for="more">Please provide a short explanation for your answer</label><br />
-          <textarea disabled="disabled" name="more" id="more" class="more">The headline and list are seperated by a blank line, and every item in the agenda is initated with a number sign, to represent numbers in the agenda list. </textarea>
+          <textarea disabled="disabled" id="more" class="form-control more" rows="8">The headline and list are seperated by a blank line, and every item in the agenda is initated with a number sign, to represent numbers in the agenda list. </textarea>
         </div>
       </div>
 
 
       <div class="form-group easy">
         <label for="easy">How many items are in the agenda?</label>
-        <input type="text" class="form-control" id="easy" name="easy" value="4" disabled="disabled" />
+        <input type="text" class="form-control" id="easy" value="4" disabled="disabled" />
       </div>
-
-    
-
-      
-
     </p>
     <!-- hidden fields -->
     <input type="hidden" name="start_time" value="{{start_time}}" />
     <input type="hidden" name="referer" value="{{referer}}" />
     <input type="hidden" name="ref_id" value="{{ref_id}}" />
-    <button type="submit" class="btn btn-default">Begin survey!</button>
+    <button type="submit" class="btn btn-primary">Begin survey!</button>
   </form>
 {% endblock %}

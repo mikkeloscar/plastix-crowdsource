@@ -54,11 +54,7 @@ NUM_EXERCISES = 20
 def parse_exercises(fpath):
     fpath = os.path.join(os.path.split(__file__)[0], fpath)
     lines = []
-    exercises = {
-            1: [],
-            2: [],
-            3: []
-            }
+    exercises = {}
     with open(fpath, "r") as f:
         lines = f.readlines()
 
@@ -82,7 +78,7 @@ def parse_line(line, exercises):
                     'text': elem[4],
                     'img': elem[5]
                     }
-            exercises[1].append(type_1)
+            exercises[elem[0]] = type_1
         else:
             exercise = {
                     'id': elem[0],
@@ -101,13 +97,29 @@ def parse_line(line, exercises):
                             }
                     choices.append(choice)
             exercise['choices'] = choices
-            if elem[1] == "2":
-                exercises[2].append(exercise)
-            else:
-                exercises[3].append(exercise)
+            if elem[1] == "2" or elem[1] == "3":
+                exercises[elem[0]] = exercise
     return exercises
 
 EXERCISES = parse_exercises('exercises/exercises.csv')
+
+def generate_exercise_list(exercises):
+    ex_shuffle = []
+    ex_list = []
+    ex_elems = []
+
+    # produce a list we can shuffle later on
+    for key, val in exercises.iteritems():
+        ex_shuffle.append(val)
+
+    random.shuffle(ex_shuffle)
+    for i, s in enumerate(ex_shuffle):
+        if i >= NUM_EXERCISES:
+            break
+        if s['id'] not in ex_list and s['element'] not in ex_elems:
+            ex_list.append(s['id'])
+            ex_elems.append(s['element'])
+    return ex_list
 
 def parse_history(history):
     if history == "":
@@ -184,11 +196,45 @@ class Index(webapp2.RequestHandler):
             'start_time': start_time,
             'referer': referer,
             'ref_id': ref_id,
+        }
+
+        view = JINJA_ENVIRONMENT.get_template('welcome.html')
+        self.response.write(view.render(values))
+
+    def post(self):
+        start_time = int(self.request.get('start_time'))
+        ref = self.request.get('referer')
+        ref_id = self.request.get('ref_id')
+
+        values = {
+            'start_time': start_time,
+            'referer': ref,
+            'ref_id': ref_id,
             'nations': nations,
         }
 
         view = JINJA_ENVIRONMENT.get_template('survey.html')
         self.response.write(view.render(values))
+
+
+
+class Start(webapp2.RequestHandler):
+
+    # def get(self):
+    #     # collect some userdata
+    #     referer = self.request.referer
+    #     start_time = int(time.time()) # now unix time
+    #     ref_id = self.request.get('r')
+
+    #     values = {
+    #         'start_time': start_time,
+    #         'referer': referer,
+    #         'ref_id': ref_id,
+    #         'nations': nations,
+    #     }
+
+    #     view = JINJA_ENVIRONMENT.get_template('survey.html')
+    #     self.response.write(view.render(values))
 
     def post(self):
         start_time = int(self.request.get('start_time'))
@@ -230,32 +276,36 @@ class Index(webapp2.RequestHandler):
             self.response.write('{0}\n'.format(e)) # TODO fix
             return
 
-        print(s.key().id())
-
-        self.redirect('/exercise?id=%d' % s.key().id())
+        self.redirect('/exercise?id=%d#no-back' % s.key().id())
 
 
 class Exercise(webapp2.RequestHandler):
 
     def get(self):
+
+        # generate exercises list
+        exercises = generate_exercise_list(EXERCISES)
+
         survey_id = self.request.get('id')
 
-        history, exercise = get_exercise("", 1)
+        ex_num = exercises.pop()
+
+        exercise = EXERCISES[ex_num]
 
         values = {
                 'survey_id': survey_id,
+                # 'history': history,
                 'type': exercise['type'],
-                'history': history,
                 'ex_id': exercise['id'],
-                'num': 1,
                 'exercise': exercise,
+                'exercises': ';'.join(exercises),
                 'submit': 'Continue'
                 }
 
         view = JINJA_ENVIRONMENT.get_template('exercise.html')
         self.response.write(view.render(values))
 
-    def post(self, num):
+    def post(self):
         survey_id = self.request.get('survey_id')
 
         # store exercise
@@ -279,22 +329,23 @@ class Exercise(webapp2.RequestHandler):
         except Exception as e:
             self.response.write('{0}'.format(e))
 
-        history = self.request.get('history')
-        # generate random exercise
-        history, exercise = get_exercise(history, int(num) + 1)
+        exercises = self.request.get('exercises').split(';')
 
         # prepare for new exercise
-        if int(num) <= NUM_EXERCISES and exercise:
-            new_num = int(num) + 1
+        if len(exercises) > 0 and exercises[0] != "":
+            ex_num = exercises.pop()
+
+            exercise = EXERCISES[ex_num]
+
             values = {
                     'survey_id': survey_id,
                     'type': exercise['type'],
-                    'history': history,
+                    # 'history': history,
                     'ex_id': exercise['id'],
-                    'num': new_num,
-                    'exercise': exercise
+                    'exercise': exercise,
+                    'exercises': ';'.join(exercises)
                     }
-            if int(num) == NUM_EXERCISES:
+            if len(exercises) == 0:
                 values['submit'] = 'Submit'
             else:
                 values['submit'] = 'Continue'
@@ -310,11 +361,38 @@ class Exercise(webapp2.RequestHandler):
                 s.put()
             except Exception as e:
                 self.response.write('{0}'.format(e))
-            self.response.write("Thank you for your answers, you spend %d seconds on them!\n" % s.answer_time)
+
+            values = {
+                    'survey_id': survey_id,
+                    'feedback': False
+                    }
+            view = JINJA_ENVIRONMENT.get_template('finish.html')
+            self.response.write(view.render(values))
+
+class Finish(webapp2.RequestHandler):
+
+    def post(self):
+        survey_id = self.request.get('survey_id')
+        # get SurveyModel and add feedback
+        s = SurveyModel.get_by_id(int(survey_id))
+        s.feedback = self.request.get('feedback')
+        try:
+            s.put()
+        except Exception as e:
+            self.response.write('{0}'.format(e))
+
+        values = {
+                'survey_id': survey_id,
+                'feedback': True
+                }
+        view = JINJA_ENVIRONMENT.get_template('finish.html')
+        self.response.write(view.render(values))
+
 
 
 app = webapp2.WSGIApplication([
     ('/', Index),
+    ('/start', Start),
     ('/exercise', Exercise),
-    (r'/exercise/(\d+)', Exercise)
+    ('/finish', Finish),
 ])

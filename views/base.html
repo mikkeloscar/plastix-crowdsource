@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Markup language survey</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,6 +40,27 @@
           var w = $(this).width();
           $(this).width(w/3);
         });
+
+        // It works without the History API, but will clutter up the history
+        var history_api = typeof history.pushState !== 'undefined'
+
+        // The previous page asks that it not be returned to
+        if ( location.hash == '#no-back' ) {
+          // Push "#no-back" onto the history, making it the most recent "page"
+          if ( history_api ) history.pushState(null, '', '#stay')
+          else location.hash = '#stay'
+
+          // When the back button is pressed, it will harmlessly change the url
+          // hash from "#stay" to "#no-back", which triggers this function
+          window.onhashchange = function() {
+            // User tried to go back; warn user, rinse and repeat
+            if ( location.hash == '#no-back' ) {
+              //alert("You shall not pass!")
+              if ( history_api ) history.pushState(null, '', '#stay')
+              else location.hash = '#stay'
+            }
+          }
+        }
       };
     </script>
 
@@ -49,7 +70,7 @@
     <div class="navbar navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">PLSurvey</a>
+          <a class="navbar-brand" href="#">Markup language survey</a>
         </div>
       </div>
     </div>
