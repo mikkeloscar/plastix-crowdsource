@@ -182,6 +182,7 @@ class SurveyModel(db.Model):
     programming = db.BooleanProperty(indexed=False, default=False)
     programmingex = db.IntegerProperty()
     programminglang = db.StringProperty()
+    feedback = db.TextProperty(indexed=False)
 
 
 class Index(webapp2.RequestHandler):
