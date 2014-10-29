@@ -41,6 +41,55 @@
           $(this).width(w/3);
         });
 
+        // check fields before submitting
+        $(".submit").click(function(e){
+          e.preventDefault();
+          var error = false;
+
+          // put text editor into textarea
+          $("#texteditor").text($(".CodeMirror-code").text());
+
+          // check all input fields
+          $("input[type=text]").each(function(){
+            var text = $(this).val();
+            if(text == ""){
+              error = true;
+              $(this).addClass("error");
+              return false;
+            }
+            $(this).removeClass("error");
+          });
+
+          // check text areas
+          $("textarea").each(function(){
+            var text = $(this).val();
+            if(text == ""){
+              error = true;
+              $(this).addClass("error");
+              return false;
+            }
+
+            $(this).removeClass("error");
+          });
+
+          // check radios
+          var choices = $('input[name=choice]');
+          if(choices.length != 0){
+            var val = $('input[name=choice]:checked').val();
+            if(typeof val == 'undefined'){
+              error = true;
+              $(".choices").addClass("error");
+            } else {
+              $(".choices").removeClass("error");  
+            }
+          }
+
+          // submit form if no errors exist
+          if(!error){
+            $("form").submit();
+          }
+        });
+
         // It works without the History API, but will clutter up the history
         var history_api = typeof history.pushState !== 'undefined'
 
