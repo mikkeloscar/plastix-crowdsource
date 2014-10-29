@@ -277,38 +277,55 @@ class Start(webapp2.RequestHandler):
             self.response.write('{0}\n'.format(e)) # TODO fix
             return
 
-        self.redirect('/exercise?id=%d#no-back' % s.key().id())
+        self.redirect('/exercise/1?id=%d#no-back' % s.key().id())
 
 
 class Exercise(webapp2.RequestHandler):
 
-    def get(self):
+    def get(self, num):
 
-        # generate exercises list
-        exercises = generate_exercise_list(EXERCISES)
+        nums = 0
+        if self.request.cookies.get('nums'):
+            nums = int(self.request.cookies.get('nums'))
 
-        survey_id = self.request.get('id')
 
-        ex_num = exercises.pop()
+        if num == "1":
+            # generate exercises list
+            exercises = generate_exercise_list(EXERCISES)
+
+            survey_id = self.request.get('id')
+
+            self.response.set_cookie("survey_id", str(survey_id), overwrite=True)
+            self.response.set_cookie("nums", str(len(exercises)), overwrite=True)
+            self.response.set_cookie("exercises", ';'.join(exercises),
+                    overwrite=True)
+
+        elif int(num) <= nums:
+            exercises = self.request.cookies.get('exercises').split(';')
+        else:
+            self.response.write('Invalid request')
+            self.response.set_status(404)
+
+        ex_num = exercises[int(num)-1]
 
         exercise = EXERCISES[ex_num]
 
         values = {
-                'survey_id': survey_id,
                 # 'history': history,
                 'type': exercise['type'],
                 'ex_id': exercise['id'],
                 'exercise': exercise,
-                'exercises': ';'.join(exercises),
                 'submit': 'Continue'
                 }
+        if int(num) == nums:
+            values['submit'] = 'Submit'
 
         view = JINJA_ENVIRONMENT.get_template('exercise.html')
         self.response.write(view.render(values))
 
-    def post(self):
-        survey_id = self.request.get('survey_id')
 
+    def post(self, num):
+        survey_id = self.request.cookies.get('survey_id')
         # store exercise
         e = ExerciseModel()
         e.survey_id = int(survey_id)
@@ -330,29 +347,8 @@ class Exercise(webapp2.RequestHandler):
         except Exception as e:
             self.response.write('{0}'.format(e))
 
-        exercises = self.request.get('exercises').split(';')
-
-        # prepare for new exercise
-        if len(exercises) > 0 and exercises[0] != "":
-            ex_num = exercises.pop()
-
-            exercise = EXERCISES[ex_num]
-
-            values = {
-                    'survey_id': survey_id,
-                    'type': exercise['type'],
-                    # 'history': history,
-                    'ex_id': exercise['id'],
-                    'exercise': exercise,
-                    'exercises': ';'.join(exercises)
-                    }
-            if len(exercises) == 0:
-                values['submit'] = 'Submit'
-            else:
-                values['submit'] = 'Continue'
-
-            view = JINJA_ENVIRONMENT.get_template('exercise.html')
-            self.response.write(view.render(values))
+        if int(num) < int(self.request.cookies.get('nums')):
+            self.redirect('/exercise/%d' % (int(num) + 1))
         else:
             # get SurveyModel and add answer_time and endtime
             s = SurveyModel.get_by_id(int(survey_id))
@@ -369,6 +365,7 @@ class Exercise(webapp2.RequestHandler):
                     }
             view = JINJA_ENVIRONMENT.get_template('finish.html')
             self.response.write(view.render(values))
+
 
 class Finish(webapp2.RequestHandler):
 
@@ -390,10 +387,9 @@ class Finish(webapp2.RequestHandler):
         self.response.write(view.render(values))
 
 
-
 app = webapp2.WSGIApplication([
     ('/', Index),
     ('/start', Start),
-    ('/exercise', Exercise),
+    (r'/exercise/(\d+)', Exercise),
     ('/finish', Finish),
 ])
