@@ -63,6 +63,7 @@
           if(editor){
             if(editor.getValue() == ""){
               $("#texteditorcontainer").addClass("error");
+              error = true;
             } else {
               $("#texteditorcontainer").removeClass("error");
               // put value into textarea
