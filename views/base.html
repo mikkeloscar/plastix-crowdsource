@@ -19,10 +19,12 @@
     <script>
       window.onload = function () {
         var myTextarea = document.getElementById("texteditor");
+        var editor;
+
         if(myTextarea){
           var readOnly = $(myTextarea).hasClass("read-only");
 
-          var editor = CodeMirror.fromTextArea(myTextarea, {
+          editor = CodeMirror.fromTextArea(myTextarea, {
             lineNumbers: true,
             lineWrapping: true,
             mode: "text/html",
@@ -46,30 +48,37 @@
           e.preventDefault();
           var error = false;
 
-          // put text editor into textarea
-          $("#texteditor").text($(".CodeMirror-code").text());
-
-          // check all input fields
+          // check all input text fields
           $("input[type=text]").each(function(){
             var text = $(this).val();
             if(text == ""){
               error = true;
-              $(this).addClass("error");
+              $(this).parent().addClass("has-error");
               return false;
             }
-            $(this).removeClass("error");
+            $(this).removeClass("has-error");
           });
 
-          // check text areas
-          $("textarea").each(function(){
+          // check text editor
+          if(editor){
+            if(editor.getValue() == ""){
+              $("#texteditorcontainer").addClass("error");
+            } else {
+              $("#texteditorcontainer").removeClass("error");
+              // put value into textarea
+              $("#texteditor").text(editor.getValue());
+            }
+          }
+
+          // check elaboration
+          $("#more").each(function(){
             var text = $(this).val();
             if(text == ""){
               error = true;
-              $(this).addClass("error");
+              $(this).parent().addClass("has-error");
               return false;
             }
-
-            $(this).removeClass("error");
+            $(this).removeClass("has-error");
           });
 
           // check radios
@@ -78,9 +87,9 @@
             var val = $('input[name=choice]:checked').val();
             if(typeof val == 'undefined'){
               error = true;
-              $(".choices").addClass("error");
+              $(".choice").addClass("error");
             } else {
-              $(".choices").removeClass("error");  
+              $(".choice").removeClass("error");  
             }
           }
 
