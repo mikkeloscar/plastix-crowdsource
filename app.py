@@ -386,10 +386,66 @@ class Finish(webapp2.RequestHandler):
         view = JINJA_ENVIRONMENT.get_template('finish.html')
         self.response.write(view.render(values))
 
+class Data(webapp2.RequestHandler):
+
+    def get(self, t):
+        if t == "exercises":
+            exercises = ExerciseModel.all()
+            output = []
+            for e in exercises:
+                output.append(exercise_to_csv(e))
+            self.response.write("\n".join(output))
+        elif t == "surveys":
+            surveys = SurveyModel.all()
+            output = []
+            for s in surveys:
+                output.append(survey_to_csv(s))
+            self.response.write("\n".join(output))
+        else:
+            self.response.write("nothing\n")
+
+
+def exercise_to_csv(e):
+    return ','.join([
+        str(e.survey_id),
+        str(e.ex_type),
+        str(e.ex_id),
+        str(e.choice),
+        wrap(e.answer),
+        wrap(e.more),
+        wrap(e.easy),
+        str(e.date)
+        ])
+
+
+def survey_to_csv(s):
+    return ','.join([
+            str(s.date),
+            wrap(s.ref),
+            wrap(s.ref_id),
+            wrap(s.ip),
+            str(s.age),
+            wrap(s.gender),
+            wrap(s.nation),
+            str(s.start_time),
+            str(s.answer_time),
+            str(s.end_time),
+            str(s.education),
+            wrap(s.field),
+            str(s.programming),
+            str(s.programmingex),
+            str(s.programminglang),
+            wrap(s.feedback),
+            ])
+
+def wrap(field):
+    return '"%s"' % str(field)
+
 
 app = webapp2.WSGIApplication([
     ('/', Index),
     ('/start', Start),
     (r'/exercise/(\d+)', Exercise),
     ('/finish', Finish),
+    (r'/csv/(\w+)', Data),
 ])
