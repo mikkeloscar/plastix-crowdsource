@@ -18,7 +18,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/4.6.0/codemirror.min.js"></script>
     <script>
       window.onload = function () {
-        var myTextarea = document.getElementById("texteditor");
+        var myTextarea = document.getElementById("answer");
         var editor;
 
         if(myTextarea){
@@ -43,7 +43,84 @@
           $(this).width(w/3);
         });
 
-        // check fields before submitting
+        // check fields before submitting first page
+        $(".submitsurvey").click(function(e){
+          e.preventDefault();
+          var error = false;
+
+          // check age
+          if(!(parseInt($("#age").val()) > 0)){
+            error = true;
+            $("#age").addClass("error");
+          } else {
+            $("#age").removeClass("error");
+          }
+
+          // check gender
+          var gender = $('input[name=gender]:checked').val();
+          if(!(gender == "male" || gender == "female")){
+            error = true;
+            $('input[name=gender]').parent().parent().addClass("error");
+          } else {
+            $('input[name=gender]').parent().parent().removeClass("error");
+          }
+
+          // nationality
+          if($("#nations").val() == "0"){
+            error = true;
+            $("#nations").addClass("error");
+          } else {
+            $("#nations").removeClass("error");
+          }
+
+          // education
+          // check gender
+          var education = parseInt($('input[name=education]:checked').val());
+          if(!(education > 0)){
+            error = true;
+            $('input[name=education]').parent().parent().addClass("error");
+          } else {
+            $('input[name=education]').parent().parent().removeClass("error");
+            if(education > 2){
+              // check field
+              var education2 = $('input[name=education2]:checked').val();
+              if(education2 == undefined){
+                error = true;
+                $('input[name=education2]').parent().parent().addClass("error");
+              } else {
+                $('input[name=education2]').parent().parent().removeClass("error");
+              }
+            }
+          }
+
+          // programming
+          var programming = $('input[name=programming]:checked').val();
+          if(!(programming == "yes" || programming == "no")){
+            error = true;
+            $('input[name=programming]').parent().parent().addClass("error");
+          } else {
+            $('input[name=programming]').parent().parent().removeClass("error");
+
+            // check experience
+            if(programming == "yes"){
+              var experience = parseInt($('input[name=programmingex]:checked').val());
+              if(!(experience > 0)){
+                error = true;
+                $('input[name=programmingex]').parent().parent().addClass("error");
+              } else {
+                $('input[name=programmingex]').parent().parent().removeClass("error");
+              }
+            }
+          }
+
+          // submit form if no errors exist
+          if(!error){
+            $("form").submit();
+          }
+
+        });
+
+        // check fields before submitting an exercise
         $(".submit").click(function(e){
           e.preventDefault();
           var error = false;
@@ -67,7 +144,7 @@
             } else {
               $("#texteditorcontainer").removeClass("error");
               // put value into textarea
-              $("#texteditor").text(editor.getValue());
+              $("#answer").text(editor.getValue());
             }
           }
 
