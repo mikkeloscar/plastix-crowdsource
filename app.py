@@ -392,18 +392,31 @@ class Data(webapp2.RequestHandler):
         if t == "exercises":
             exercises = ExerciseModel.all()
             output = []
+            output.append(exercise_csv_header())
             for e in exercises:
                 output.append(exercise_to_csv(e))
             self.response.write("\n".join(output))
         elif t == "surveys":
             surveys = SurveyModel.all()
             output = []
+            output.append(survey_csv_header())
             for s in surveys:
                 output.append(survey_to_csv(s))
             self.response.write("\n".join(output))
         else:
             self.response.write("nothing\n")
 
+def exercise_csv_header():
+    return ','.join([
+        wrap("Survey ID"),
+        wrap("Exercise Type"),
+        wrap("Exercise ID"),
+        wrap("Choice"),
+        wrap("Answer"),
+        wrap("More"),
+        wrap("Answer (Easy question)"),
+        wrap("Date")
+        ])
 
 def exercise_to_csv(e):
     return ','.join([
@@ -417,26 +430,48 @@ def exercise_to_csv(e):
         str(e.date)
         ])
 
+def survey_csv_header():
+    return ','.join([
+        wrap("ID"),
+        wrap("Date"),
+        wrap("referer"),
+        wrap("referer ID"),
+        wrap("IP"),
+        wrap("Age"),
+        wrap("Gender"),
+        wrap("Nationality"),
+        wrap("Start time (UNIX)"),
+        wrap("Answer time (Seconds)"),
+        wrap("End time (UNIX)"),
+        wrap("Education"),
+        wrap("Field"),
+        wrap("Programming experience"),
+        wrap("Programming proficiency level"),
+        wrap("Programming languages"),
+        wrap("Feedback")
+        ])
+
 
 def survey_to_csv(s):
     return ','.join([
-            str(s.date),
-            wrap(s.ref),
-            wrap(s.ref_id),
-            wrap(s.ip),
-            str(s.age),
-            wrap(s.gender),
-            wrap(s.nation),
-            str(s.start_time),
-            str(s.answer_time),
-            str(s.end_time),
-            str(s.education),
-            wrap(s.field),
-            str(s.programming),
-            str(s.programmingex),
-            str(s.programminglang),
-            wrap(s.feedback),
-            ])
+        str(s.key().id()),
+        str(s.date),
+        wrap(s.ref),
+        wrap(s.ref_id),
+        wrap(s.ip),
+        str(s.age),
+        wrap(s.gender),
+        wrap(s.nation),
+        str(s.start_time),
+        str(s.answer_time),
+        str(s.end_time),
+        str(s.education),
+        wrap(s.field),
+        str(s.programming),
+        str(s.programmingex),
+        str(s.programminglang),
+        wrap(s.feedback),
+        ])
 
 def wrap(field):
     return '"%s"' % str(field)
