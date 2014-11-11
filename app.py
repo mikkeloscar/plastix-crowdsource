@@ -484,6 +484,8 @@ def survey_to_csv(s):
         ])
 
 def wrap(field):
+    if field and isinstance(field, unicode):
+        field = field.encode('utf8')
     return '"%s"' % str(field)
 
 
