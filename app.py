@@ -89,11 +89,18 @@ def parse_line(line, exercises):
                     'img': elem[5]
                     }
             choices = []
+            choice_map = {
+                    1: "v",
+                    2: "x",
+                    3: "y",
+                    4: "z"
+                    }
             for i, c in enumerate(elem[6:]):
                 if c != "" and c != "\n":
                     choice = {
                             'img': c,
-                            'value': i + 1
+                            'value': i + 1,
+                            'id': choice_map[i+1]
                             }
                     choices.append(choice)
             exercise['choices'] = choices
@@ -309,6 +316,10 @@ class Exercise(webapp2.RequestHandler):
         ex_num = exercises[int(num)-1]
 
         exercise = EXERCISES[ex_num]
+
+        # suffle choices
+        if exercise['type'] in ["2", "3"]:
+            random.shuffle(exercise['choices'])
 
         values = {
                 # 'history': history,

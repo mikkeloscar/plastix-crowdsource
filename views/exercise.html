@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
   <form role="form" action="#no-back" method="post">
-<!--     <p>
-    {{ exercise['id'] }}
-    </p> -->
 
     <div class="exercise">
     {% if exercise['type'] == "1" %}
@@ -16,7 +13,7 @@
             <textarea id="answer" name="answer"></textarea>
         </div>
       </div><div class="spacer"></div><div class="image"><img src="/{{exercise['img']}}" /></div>
-      
+
     {% else %}
     <div class="img"><img src="/{{exercise['img']}}" /></div>
     <strong>Exercise</strong><br />
@@ -25,6 +22,7 @@
       {% for choice in exercise['choices'] %}
       <div class="choice">
         <label>
+          ({{choice['id']}})
           <div class="radio-choice">
             <input type="radio" name="choice" value="{{choice['value']}}" />
           </div>
@@ -34,7 +32,7 @@
       {% endfor %}
     </div>
     {% endif %}
-      
+
       <!-- we want elaboration for every non-easy exercise -->
       <div class="elaborate">
         <label for="more">Please provide a short explanation for your answer</label><br />
@@ -47,7 +45,6 @@
       <label for="easy">{{ exercise['easy'] }}</label>
       <input type="text" class="form-control" id="easy" name="easy" />
     </div>
-    
 
     <!-- hidden fields -->
     <input type="hidden" name="survey_id" value="{{survey_id}}" />
