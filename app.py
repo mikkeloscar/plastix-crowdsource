@@ -295,8 +295,7 @@ class Exercise(webapp2.RequestHandler):
         if self.request.cookies.get('nums'):
             nums = int(self.request.cookies.get('nums'))
 
-
-        if num == "1":
+        if num == "1" and not self.request.cookies.get('exercises'):
             # generate exercises list
             exercises = generate_exercise_list(EXERCISES)
 
