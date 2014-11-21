@@ -49,7 +49,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-NUM_EXERCISES = 1
+NUM_EXERCISES = 20
 
 NUM_PARTICIPANTS = 80
 CROWDFLOWER_ID = "crowdflower"
