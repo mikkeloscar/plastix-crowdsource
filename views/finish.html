@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-<form role="form" action="/finish#no-back" method="post">
+<form role="form" action="/finish/{{ survey_id }}#no-back" method="post">
     <p>
       <!-- introduction -->
       <div class="introduction">
         <h2>Thank you!</h2>
         <p>Thank you for participating in this survey</p>
 
-        <!-- TODO provide magic number for crowdflower participants -->
+        {% if crowdflower %}
+        <div class="crowdflower">
+          <p>Please copy the crowdflower code below and submit it in the form at crowdflower, in order to get paid</p>
+          <div>Crowdflower code: <span>{{ crowdflower }}</span></div>
+        </div>
+        {% endif %}
 
     {% if not feedback %}
         <p>If you want to provide any general feedback about the survey please write it in the field below</p>
@@ -21,7 +26,6 @@
 
     </p>
     <!-- hidden fields -->
-    <input type="hidden" name="survey_id" value="{{survey_id}}" />
     {% if not feedback %}
       <button type="submit" class="btn btn-default">Send feedback</button>
     {% endif %}

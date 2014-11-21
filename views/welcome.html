@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+{% if crowdflower %}
+  <p>
+    <h2>Thank you for your interrest!</h2>
+    <p>The survey has ended for crowdflower users. If you still wish to
+    participate in the survey then you can access it <a href="/">here</a>, but
+    note that we will not be able to pay you for the work.</p>
+  </p>
+
+{% else %}
 <form role="form" action="/#no-back" method="post">
     <p>
       <!-- introduction -->
@@ -20,7 +29,7 @@
 
         <p>We will store your IP-address and the amount of time you spend
         solving the exercises for stastistical purposes. The IP-address will
-        NOT be shared with anyone.</p>
+        NOT be shared with anyone and will be deleted from our records as soon as we have processed the data.</p>
 
         <hr>
         <h3>Example exercise</h3>
@@ -58,4 +67,5 @@
     <input type="hidden" name="ref_id" value="{{ref_id}}" />
     <button type="submit" class="btn btn-primary">Begin survey!</button>
   </form>
+{% endif %}
 {% endblock %}

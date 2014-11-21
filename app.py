@@ -49,7 +49,11 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-NUM_EXERCISES = 20
+NUM_EXERCISES = 1
+
+NUM_PARTICIPANTS = 80
+CROWDFLOWER_ID = "crowdflower"
+CROWDFLOWER_HASH = "CpU0L6V7d3Q0gz1q"
 
 def parse_exercises(fpath):
     fpath = os.path.join(os.path.split(__file__)[0], fpath)
@@ -199,11 +203,22 @@ class Index(webapp2.RequestHandler):
         referer = self.request.referer
         start_time = int(time.time()) # now unix time
         ref_id = self.request.get('r')
+        crowdflower = False
+
+        if ref_id == CROWDFLOWER_ID:
+            flowers = SurveyModel.gql("WHERE ref_id = :1", ref_id)
+            i = 0
+            for u in flowers:
+                i += 1
+
+            if i >= NUM_PARTICIPANTS:
+                crowdflower = True
 
         values = {
             'start_time': start_time,
             'referer': referer,
             'ref_id': ref_id,
+            'crowdflower': crowdflower
         }
 
         view = JINJA_ENVIRONMENT.get_template('welcome.html')
@@ -369,18 +384,34 @@ class Exercise(webapp2.RequestHandler):
             except Exception as e:
                 self.response.write('{0}'.format(e))
 
-            values = {
-                    'survey_id': survey_id,
-                    'feedback': False
-                    }
-            view = JINJA_ENVIRONMENT.get_template('finish.html')
-            self.response.write(view.render(values))
+            self.redirect('/finish/%d' % (int(survey_id)))
+
 
 
 class Finish(webapp2.RequestHandler):
 
-    def post(self):
-        survey_id = self.request.get('survey_id')
+    def get(self, survey_id, feedback=False):
+        s = SurveyModel.get_by_id(int(survey_id))
+
+        if s.ip == self.request.remote_addr:
+            crowdflower = None
+            min_time = 2 * 60 * 60
+
+            if s.ref_id == CROWDFLOWER_ID and s.answer_time >= min_time:
+                crowdflower = CROWDFLOWER_HASH
+
+            values = {
+                    'survey_id': survey_id,
+                    'feedback': feedback,
+                    'crowdflower': crowdflower
+                    }
+            view = JINJA_ENVIRONMENT.get_template('finish.html')
+            self.response.write(view.render(values))
+        else:
+            self.response.write("nothing\n")
+
+
+    def post(self, survey_id):
         # get SurveyModel and add feedback
         s = SurveyModel.get_by_id(int(survey_id))
         s.feedback = self.request.get('feedback')
@@ -389,12 +420,7 @@ class Finish(webapp2.RequestHandler):
         except Exception as e:
             self.response.write('{0}'.format(e))
 
-        values = {
-                'survey_id': survey_id,
-                'feedback': True
-                }
-        view = JINJA_ENVIRONMENT.get_template('finish.html')
-        self.response.write(view.render(values))
+        self.redirect('/finish/%d/done' % (int(survey_id)))
 
 class Data(webapp2.RequestHandler):
 
@@ -493,6 +519,7 @@ app = webapp2.WSGIApplication([
     ('/', Index),
     ('/start', Start),
     (r'/exercise/(\d+)', Exercise),
-    ('/finish', Finish),
+    (r'/finish/(\d+)', Finish),
+    (r'/finish/(\d+)/(\w+)', Finish),
     (r'/csv/(\w+)', Data),
 ])
