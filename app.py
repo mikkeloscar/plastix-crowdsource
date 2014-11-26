@@ -49,9 +49,9 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-NUM_EXERCISES = 20
+NUM_EXERCISES = 5
 
-NUM_PARTICIPANTS = 80
+NUM_PARTICIPANTS = 10
 CROWDFLOWER_ID = "crowdflower"
 CROWDFLOWER_HASH = "CpU0L6V7d3Q0gz1q"
 
