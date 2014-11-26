@@ -17,10 +17,14 @@ column2:President
 3:Thomas Jefferson","this is maybe not the best way if the table is larger.","3",2014-10-30 07:21:46.718160
 5722646637445120,2,3,1,"None","I feel like it is more graphically intuitive in no. 1 that some bullets are sub-bullets of others. The level are easier to identify IMO. ","3",2014-10-30 07:09:22.612750
 5722646637445120,3,21,3,"None","The code seems more like one statement rather than a combination. ","A gull",2014-10-30 07:24:34.273440
-5656058538229760,3,13,1,"None","I like the symbol in the first option as it is not too "dominating"","2",2014-11-11 11:32:43.592450
+5717271485874176,2,2,1,"None","Just a guess 
+Who would ever make three dots in a row?","8",2014-11-20 20:48:36.873290
+5656058538229760,3,13,1,"None","I like the symbol in the first option as it is not too \"dominating\"","2",2014-11-11 11:32:43.592450
+5717271485874176,3,15,4,"None","Because of the line weights","English",2014-11-20 20:37:33.330840
 5106594245246976,3,27,1,"None","dunno.","2",2014-10-30 14:33:44.004550
 5739407210446848,3,18,3,"None","I have used the ^(#) on my calculator in high school for the same notation.","1",2014-10-30 06:58:14.971910
 5722646637445120,3,15,4,"None","The last one looks a bit more like the text I want in the end. ","English",2014-10-30 07:23:28.017870
+5717271485874176,3,18,3,"None","Just like a calculator ","1",2014-11-20 20:41:18.567180
 5739407210446848,1,14,None,"<h1> English language</h1>
 English is a West Germanic Language.
 
@@ -33,6 +37,7 @@ The vocabulary of English is undoubtedly very large.
 <h2> History </h2>
 English originated in the dialects of North Sea Germanic.","I felt like I needed a start and end for each subject. The body should be a default somehow.","English",2014-10-30 07:09:01.215390
 5722646637445120,3,7,2,"None","To me it's the robustness of bold face is better illustrated with double markings ie. ** in this case. In that way I'm not in doubt whether the signs is supposed to be printed or not. ","2",2014-10-30 07:13:46.292540
+5717271485874176,2,6,1,"None","it could be any of the three","2",2014-11-20 20:32:32.993750
 5656058538229760,1,16,None,"The first Harry Potter book[1] was written in 1997.
 
 [1] by J.K. Rowling","Square brackets make a lot of sense to me. Maybe because that is how Wikipedia makes footnotes?","1",2014-11-11 11:17:18.371610
@@ -43,21 +48,30 @@ English originated in the dialects of North Sea Germanic.","I felt like I needed
 5656058538229760,3,4,2,"None","I like the visual hierarchy of the second  option","8",2014-11-11 11:01:05.173630
 5656058538229760,3,7,1,"None","Option 1 with 1 star is the most clean option. I like that.","2",2014-11-11 11:33:20.784980
 5739407210446848,3,10,1,"None","I think the // creates a good connotation to italic. _ xxx _, for me, creates a connotation to something underlined.","2",2014-10-30 07:02:24.555750
+5717271485874176,1,28,None,"Year President
+1789 George Washington
+1797 Jon Adams
+1801 Thomas Jefferson","Its looks like a plain text ","3",2014-11-20 20:45:48.172580
 5106594245246976,3,15,2,"None","seems this way","English",2014-10-30 14:37:03.399090
 5739407210446848,3,13,3,"None","I think the # is a good option because usually (working in photoshop) a color can be defined by a number that starts with #","2",2014-10-30 07:11:55.328260
 5106594245246976,2,12,1,"None","the color before the text","2",2014-10-30 14:29:48.214640
 5739407210446848,2,2,1,"None","The first option gives a better overview of the hieraki","8",2014-10-30 06:59:28.004250
-5722646637445120,2,9,3,"None","I feel like none of the options work. I shouldn't need underline/bold/italic to write "_Harry Potter_". 
+5717271485874176,3,10,1,"None","The forward slash looks like the italic letters","2",2014-11-20 20:34:44.164160
+5722646637445120,2,9,3,"None","I feel like none of the options work. I shouldn't need underline/bold/italic to write \"_Harry Potter_\". 
 
 I chose no. 3. ","0",2014-10-30 07:16:39.432130
+5717271485874176,2,20,1,"None","It says !my_image on the first line.
+and then on the second line it says \"!my_image gull\" whit a text following it.  ","1",2014-11-20 20:30:29.049600
 5106594245246976,2,20,1,"None","the text beneath the image.","a gull",2014-10-30 14:34:19.136260
 5722646637445120,2,12,1,"None","I want to chose both here. ","2",2014-10-30 07:21:02.516520
+5717271485874176,3,13,2,"None","The sombols contains the name of the color and the colored word.","2",2014-11-20 20:40:03.684950
 5722646637445120,1,25,None,"\beat \alpha","I guess this is influences by my latex knowledge. 
 
 In any case, I would not assume that I had to notify the compiler that I wanted greek letters instead of the latin ones on my keyboard. ","2",2014-10-30 07:11:34.550000
-5656058538229760,2,26,2,"None","If I HAVE to choose between these option, I'll go with the bold text. Italics is better represented with a more "slim" symbol - such as underscore.
+5656058538229760,2,26,2,"None","If I HAVE to choose between these option, I'll go with the bold text. Italics is better represented with a more \"slim\" symbol - such as underscore.
 
 I don't know with the special characters. I guess I would just type them directly into the document with a keyboard short cut. I don't use them very often. ","2",2014-11-11 11:14:23.554040
+5717271485874176,2,26,1,"None","The \"#\" symbol refers to numbers in the previous questions.","2",2014-11-20 20:43:30.026670
 5656058538229760,1,28,None,"–
 #Year | #President
 1789  | Georg Washington
@@ -67,8 +81,8 @@ I don't know with the special characters. I guess I would just type them directl
 
 I used an en dash to frame the table (alt + -). This should be optional, but I like how it encloses the table.
 
-Besides that I used a hashtag for the table headings and "pipes" to divide the table rows. I think it looks clean and is easy to interpret.","3",2014-11-11 11:30:56.484390
-5656058538229760,3,15,1,"None","I like the markup to be as simple as possible, so I chose between option 1 and 3. I went with option 1 as it puts more weight to the main headlines. It makes the hierarchy more visual. H1 is "bigger" than H3.","English",2014-11-11 11:08:14.536300
+Besides that I used a hashtag for the table headings and \"pipes\" to divide the table rows. I think it looks clean and is easy to interpret.","3",2014-11-11 11:30:56.484390
+5656058538229760,3,15,1,"None","I like the markup to be as simple as possible, so I chose between option 1 and 3. I went with option 1 as it puts more weight to the main headlines. It makes the hierarchy more visual. H1 is \"bigger\" than H3.","English",2014-11-11 11:08:14.536300
 5106594245246976,1,28,None,"Year//president
 1789//George Washington
 1797//John Adams
