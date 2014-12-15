@@ -1,7 +1,7 @@
 Id	Type	Element	Easy	Text	Img	Choice1	Choice2	Choice3	Choice4
 1	1	List	How many bullets are there in the list?	Please make a plain text representation of the list using the text editor	img/lists/1.png				
 2	2	List	How many bullets are contained in above notation?	Above is shown a notation for a list. Please select the option below, that you think is the best representation for the notation.	img/lists/3_1.png	img/lists/1.png	img/lists/1_2.png		
-3	2	List	How many bullets does above notation represent?	Above is shown an example of a notation for a list. Please choose below, what you think is the best representation for that notation.	img/lists/3_1.png	img/lists/1.png	img/lists/1_2.png		
+3	2	List	How many bullets does above notation represent?	Above is shown an example of a notation for a list. Please choose below, what you think is the best representation for that notation.	img/lists/3_2.png	img/lists/1.png	img/lists/1_2.png		
 4	3	List	How many bullets are there in the list?	Please select a notation below, that you think represents above list best.	img/lists/1.png	img/lists/3_1.png	img/lists/3_2.png		
 5	1	Styling Bold	How many words are written in bold?	Some text containing words in bold is shown on the right. Please write the same text in the text editor on the left, using any notation you like to represent the bold and normal text.	img/styling/bold/1.png				
 6	2	Styling Bold	How many words does above notation yield?	Please select an option below, that you think represents above notation best.	img/styling/bold/3_1.png	img/styling/bold/1.png	img/styling/bold/2_2.png	img/styling/bold/2_3.png	
