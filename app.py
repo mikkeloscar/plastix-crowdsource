@@ -515,6 +515,25 @@ def wrap(field):
     return '"%s"' % str(field).replace("\"", "\\\"")
 
 
+class CustomExercise(webapp2.RequestHandler):
+    def get(self, num):
+        exercise = EXERCISES[num]
+
+        # suffle choices
+        if exercise['type'] in ["2", "3"]:
+            random.shuffle(exercise['choices'])
+
+        values = {
+                # 'history': history,
+                'type': exercise['type'],
+                'ex_id': exercise['id'],
+                'exercise': exercise,
+                'submit': 'Continue'
+                }
+
+        view = JINJA_ENVIRONMENT.get_template('exercise.html')
+        self.response.write(view.render(values))
+
 app = webapp2.WSGIApplication([
     ('/', Index),
     ('/start', Start),
@@ -522,4 +541,5 @@ app = webapp2.WSGIApplication([
     (r'/finish/(\d+)', Finish),
     (r'/finish/(\d+)/(\w+)', Finish),
     (r'/csv/(\w+)', Data),
+    (r'/custom/(\d+)', CustomExercise)
 ])
