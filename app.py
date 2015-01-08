@@ -54,6 +54,7 @@ NUM_EXERCISES = 5
 NUM_PARTICIPANTS = 10
 CROWDFLOWER_ID = "crowdflower"
 CROWDFLOWER_HASH = "CpU0L6V7d3Q0gz1q"
+MIN_COMPLETION_TIME = 2 * 60 * 60
 
 def parse_exercises(fpath):
     fpath = os.path.join(os.path.split(__file__)[0], fpath)
@@ -395,9 +396,8 @@ class Finish(webapp2.RequestHandler):
 
         if s.ip == self.request.remote_addr:
             crowdflower = None
-            min_time = 2 * 60 * 60
 
-            if s.ref_id == CROWDFLOWER_ID and s.answer_time >= min_time:
+            if s.ref_id == CROWDFLOWER_ID and s.answer_time >= MIN_COMPLETION_TIME:
                 crowdflower = CROWDFLOWER_HASH
 
             values = {
