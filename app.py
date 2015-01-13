@@ -51,10 +51,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 NUM_EXERCISES = 5
 
-NUM_PARTICIPANTS = 10
+NUM_PARTICIPANTS = 250
 CROWDFLOWER_ID = "crowdflower"
 CROWDFLOWER_HASH = "CpU0L6V7d3Q0gz1q"
-MIN_COMPLETION_TIME = 2 * 60 * 60
+MIN_COMPLETION_TIME = long(2 * 60) # min completion time in seconds
 
 def parse_exercises(fpath):
     fpath = os.path.join(os.path.split(__file__)[0], fpath)
@@ -214,6 +214,7 @@ class Index(webapp2.RequestHandler):
 
             if i >= NUM_PARTICIPANTS:
                 crowdflower = True
+            print("nums: ", i)
 
         values = {
             'start_time': start_time,
@@ -397,7 +398,12 @@ class Finish(webapp2.RequestHandler):
         if s.ip == self.request.remote_addr:
             crowdflower = None
 
+            print('ref', s.ref_id)
+            print("lkas: ", CROWDFLOWER_ID)
+            print("time: ", s.answer_time)
+
             if s.ref_id == CROWDFLOWER_ID and s.answer_time >= MIN_COMPLETION_TIME:
+                print("CROWDFLOWER HASH", CROWDFLOWER_HASH)
                 crowdflower = CROWDFLOWER_HASH
 
             values = {
@@ -512,7 +518,7 @@ def survey_to_csv(s):
 def wrap(field):
     if field and isinstance(field, unicode):
         field = field.encode('utf8')
-    return '"%s"' % str(field).replace("\"", "\\\"")
+    return '"%s"' % str(field).replace("\"", "\'\'")
 
 
 class CustomExercise(webapp2.RequestHandler):
